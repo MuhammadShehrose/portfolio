@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Muhammad Shehrose</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #6a11cb; /* Purple */
+            --secondary-color: #2575fc; /* Blue */
+            --hover-color: #ff6f61; /* Coral */
+            --text-color: #343a40; /* Dark Grey */
+            --bg-light: #f8f9fa; /* Light Grey */
+            --bg-white: #ffffff; /* White */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+        }
+
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .sticky-nav .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .sticky-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .sticky-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .sticky-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .about-section {
+            background-color: var(--bg-white);
+        }
+
+        .core-competencies {
+            background-color: var(--bg-light);
+        }
+
+        .contact-section {
+            background-color: var(--bg-white);
+        }
+
+        .competency-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .competency-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .competency-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            padding: 30px 0;
+        }
+
+        .footer-social a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-toggler-icon::before {
+            top: 6px;
+        }
+
+        .navbar-toggler-icon::after {
+            bottom: 6px;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+            bottom: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-white text-center">
+        <div class="container">
+            <img src="https://placehold.co/150x150/EEE/31343C" alt="Muhammad Shehrose" class="rounded-circle shadow mb-3 animate__animated animate__fadeIn" style="width: 150px; height: 150px;">
+            <h1 class="display-4 animate__animated animate__fadeInDown">Muhammad Shehrose</h1>
+            <p class="lead animate__animated animate__fadeInUp">Laravel Web Developer</p>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-nav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Shehrose</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Core Competencies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h2>About Me</h2>
+                    <p>
+                        I am a passionate Laravel web developer with over 3 years of experience in building and managing web
+                        applications. My expertise includes API development, database management, and implementing
+                        multisite architectures to enhance scalability and performance.
+                    </p>
+                    <p>
+                        I am committed to delivering efficient, user-friendly solutions that meet client needs while staying
+                        up-to-date with modern web technologies.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center" data-aos="fade-left">
+                    <img src="https://placehold.co/400x300/EEE/31343C" alt="Coding" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="core-competencies">
+        <div class="container text-center">
+            <h2 class="mb-5" data-aos="fade-up">Core Competencies</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-right">
+                    <div class="card competency-card shadow">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/50x50/EEE/31343C" alt="Laravel" class="competency-icon">
+                            <h5 class="card-title">Laravel</h5>
+                            <p class="card-text">Expert in building scalable web applications with Laravel framework.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="card competency-card shadow">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/50x50/EEE/31343C" alt="API" class="competency-icon">
+                            <h5 class="card-title">API Development</h5>
+                            <p class="card-text">Skilled in creating and integrating robust APIs for seamless communication.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-left">
+                    <div class="card competency-card shadow">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/50x50/EEE/31343C" alt="Database" class="competency-icon">
+                            <h5 class="card-title">Database Management</h5>
+                            <p class="card-text">Proficient in designing and managing complex database systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-5" style="background-color: var(--bg-white);">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Professional Experience</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="timeline-badge bg-primary me-3"></div>
+                                <h5 class="card-title mb-0">Laravel Web Developer</h5>
+                            </div>
+                            <h6 class="text-muted">The Sots - Faisalabad</h6>
+                            <p class="text-muted">Feb, 2023 - Present</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">• Expert in managing multiple subdomains and developing multisite architectures</li>
+                                <li class="mb-2">• Skilled in creating and linking software interfaces (APIs)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="timeline-badge bg-primary me-3"></div>
+                                <h5 class="card-title mb-0">Laravel Web Developer</h5>
+                            </div>
+                            <h6 class="text-muted">CSoft Systems - Faisalabad</h6>
+                            <p class="text-muted">July, 2022 - Feb, 2023</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">• Skilled in database management with eloquent relationship</li>
+                                <li class="mb-2">• Expert in debugging and fixing code issues with jQuery and Ajax</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="timeline-badge bg-primary me-3"></div>
+                                <h5 class="card-title mb-0">Laravel Web Developer (Intern)</h5>
+                            </div>
+                            <h6 class="text-muted">RankSol - Faisalabad</h6>
+                            <p class="text-muted">April, 2022 - July, 2022</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">• Knowledge of MVC architecture and eloquent relationships</li>
+                                <li class="mb-2">• Responsive web design and Laravel packages implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-5" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="card shadow-sm h-100 border-0">
+                        <img src="https://placehold.co/400x300/EEE/31343C" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Career Institute</h5>
+                            <p class="card-text">Developed a dynamic Laravel-based website integrated with an Institute Management System (IMS) to manage student records, leads, and finances efficiently.</p>
+                            <a href="https://www.career.edu.pk" class="btn btn-primary" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card shadow-sm h-100 border-0">
+                        <img src="https://placehold.co/400x300/EEE/31343C" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">eShops</h5>
+                            <p class="card-text">Created an e-commerce platform with a multisite architecture, providing customizable subdomains for each user and seamless API integration for a Flutter app.</p>
+                            <a href="http://www.eshops.pk" class="btn btn-primary" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-left">
+                    <div class="card shadow-sm h-100 border-0">
+                        <img src="https://placehold.co/400x300/EEE/31343C" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Mansooba-e-Amal</h5>
+                            <p class="card-text">Led API development for a government project enabling user categorization, need assessments, and interactive decision-making processes.</p>
+                            <a href="#" class="btn btn-primary" target="_blank">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Contact Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="https://placehold.co/600x300/EEE/31343C" alt="Contact" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <h5 class="mb-3">Get in Touch</h5>
+                    <p><i class="bi bi-geo-alt-fill contact-icon"></i>Samundari Road, Faisalabad</p>
+                    <p><i class="bi bi-telephone-fill contact-icon"></i>+92-306-3305455</p>
+                    <p><i class="bi bi-envelope-fill contact-icon"></i>shah.rose.714@gmail.com</p>
+                    <p><i class="bi bi-linkedin contact-icon"></i><a href="#">linkedin.com/in/muhammadshehrose</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <div class="footer-social mb-3">
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin display-5"></i></a>
+                <a href="#" aria-label="GitHub"><i class="bi bi-github display-5"></i></a>
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter display-5"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook display-5"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram display-5"></i></a>
+                <a href="#" aria-label="Stack Overflow"><i class="bi bi-stack-overflow display-5"></i></a>
+                <a href="#" aria-label="YouTube"><i class="bi bi-youtube display-5"></i></a>
+                <a href="#" aria-label="Dribbble"><i class="bi bi-dribbble display-5"></i></a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 Muhammad Shehrose. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function () {
+            const nav = document.querySelector('.sticky-nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
+            }
+        });
+    </script>
+</body>
+
+</html>
