@@ -2,938 +2,21 @@
 <html lang="en">
 
 <head>
-    <title>Shehrose Portfolio</title>
+    <title>Muhammad Shehrose</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #2A2D3E, #424769);
-            --accent-color: #7077A1;
-            --hover-color: #F6B17A;
-            --text-color: #F7F7F7;
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --transition-speed: 0.3s;
-        }
 
-        .navbar {
-            background: var(--primary-gradient);
-            padding: 1rem;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .navbar-brand {
-            color: var(--text-color) !important;
-            font-size: 1.5rem;
-            font-weight: bold;
-            position: relative;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .navbar-brand::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: var(--hover-color);
-            transition: width var(--transition-speed) ease;
-        }
-
-        .navbar-brand:hover::after {
-            width: 100%;
-        }
-
-        .nav-link {
-            color: var(--text-color) !important;
-            margin: 0 0.5rem;
-            padding: 0.5rem 1rem;
-            position: relative;
-            transition: all var(--transition-speed) ease;
-            border-radius: 5px;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-color);
-            border-radius: 5px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform var(--transition-speed) ease;
-            z-index: -1;
-        }
-
-        .nav-link:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .nav-link:hover {
-            color: var(--hover-color) !important;
-            transform: translateY(-2px);
-        }
-
-        .navbar-toggler {
-            border: none;
-            background: transparent;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(247, 247, 247, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background: var(--primary-gradient);
-                padding: 1rem;
-                border-radius: 10px;
-                margin-top: 1rem;
-            }
-
-            .nav-link {
-                margin: 0.5rem 0;
-                text-align: center;
-            }
-        }
-
-        /* Animation for navbar items */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .nav-item {
-            animation: slideIn 0.5s ease forwards;
-            opacity: 0;
-        }
-
-        .nav-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .nav-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .nav-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .nav-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .nav-item:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .nav-link.active {
-            color: var(--hover-color) !important;
-            font-weight: bold;
-        }
-
-        .about-section {
-            min-height: 100vh;
-            background: var(--primary-gradient);
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Animated background elements */
-        .background-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--accent-color);
-            animation: float 15s infinite linear;
-        }
-
-        .shape1 {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape2 {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 10%;
-            animation-delay: -5s;
-        }
-
-        .shape3 {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            left: 50%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            50% {
-                transform: translate(100px, 100px) rotate(180deg);
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(360deg);
-            }
-        }
-
-        .profile-title {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s forwards;
-        }
-
-        .profile-subtitle {
-            font-size: 1.8rem;
-            color: var(--hover-color);
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s 0.2s forwards;
-        }
-
-        .profile-description {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s 0.4s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .highlight-box {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.6s forwards;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .highlight-box:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .tech-stack {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .tech-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-color);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .tech-icon:hover {
-            transform: rotate(360deg) scale(1.2);
-            background: var(--hover-color);
-        }
-
-        @media (max-width: 768px) {
-            .profile-title {
-                font-size: 2.5rem;
-            }
-
-            .profile-subtitle {
-                font-size: 1.5rem;
-            }
-
-            .profile-description {
-                font-size: 1.1rem;
-            }
-        }
-
-        .skills-section {
-            background: var(--primary-gradient);
-            padding: 100px 0;
-            min-height: 100vh;
-            color: var(--text-color);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--hover-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .skills-category {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .skills-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-title {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--hover-color);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .skill-card {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .skill-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
-        }
-
-        .skill-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-color);
-            border-radius: 10px;
-            font-size: 1.5rem;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            background: var(--hover-color);
-            transform: rotate(360deg);
-        }
-
-        .skill-name {
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        .workflow-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .workflow-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
-        }
-
-        .workflow-icon {
-            color: var(--hover-color);
-            font-size: 1.5rem;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .workflow-item:hover .workflow-icon {
-            transform: rotate(360deg);
-        }
-
-        @media (max-width: 768px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-        }
-
-        /* Animate on scroll */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .experience-section {
-            background: var(--primary-gradient);
-            padding: 100px 0;
-            min-height: 100vh;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--hover-color);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background: var(--accent-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 0.8s forwards;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--hover-color);
-            border: 4px solid var(--accent-color);
-            top: 50%;
-            border-radius: 50%;
-            transform: translateY(-50%);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .timeline-item:hover::after {
-            background: var(--accent-color);
-            transform: translateY(-50%) scale(1.2);
-        }
-
-        .left {
-            left: 0;
-        }
-
-        .right {
-            left: 50%;
-        }
-
-        .left::after {
-            right: -10px;
-        }
-
-        .right::after {
-            left: -10px;
-        }
-
-        .experience-card {
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all var(--transition-speed) ease;
-            position: relative;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .job-title {
-            font-size: 1.5rem;
-            color: var(--hover-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .company {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .company-icon {
-            color: var(--accent-color);
-        }
-
-        .date {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .responsibilities {
-            margin: 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .responsibility-item {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .responsibility-item::before {
-            content: '•';
-            color: var(--hover-color);
-            position: absolute;
-            left: 0;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .responsibility-item:hover::before {
-            color: var(--accent-color);
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item::after {
-                left: 21px;
-            }
-
-            .right {
-                left: 0;
-            }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .projects-section {
-            background: var(--primary-gradient);
-            padding: 100px 0;
-            min-height: 100vh;
-            color: var(--text-color);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--hover-color);
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all var(--transition-speed) ease;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s forwards;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            height: 100%;
-            min-height: 250px;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.1);
-        }
-
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .project-card:hover .image-overlay {
-            opacity: 1;
-        }
-
-        .project-content {
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-title {
-            font-size: 1.8rem;
-            color: var(--hover-color);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .project-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--hover-color);
-            transition: width var(--transition-speed) ease;
-        }
-
-        .project-card:hover .project-title::after {
-            width: 100%;
-        }
-
-        .project-description {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: var(--accent-color);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .tech-tag:hover {
-            background: var(--hover-color);
-            transform: scale(1.1);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .project-link {
-            color: var(--text-color);
-            font-size: 1.4rem;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .project-link:hover {
-            color: var(--hover-color);
-            transform: scale(1.2);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .project-image-container {
-                min-height: 200px;
-            }
-
-            .project-content {
-                padding: 1.5rem;
-            }
-
-            .project-title {
-                font-size: 1.5rem;
-            }
-
-            .project-description {
-                font-size: 1rem;
-            }
-        }
-
-        .contact-section {
-            background: var(--primary-gradient);
-            padding: 100px 0;
-            min-height: 100vh;
-            color: var(--text-color);
-        }
-
-        .contact-animation {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            min-height: 300px;
-        }
-
-        .contact-info {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--hover-color);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-item:hover i {
-            transform: scale(1.2);
-        }
-
-        .contact-item a,
-        .contact-item span {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
-
-        .contact-item a:hover {
-            color: var(--hover-color);
-        }
-
-        .footer-section {
-            background: #2A2D3E;
-            padding: 2rem 0;
-            color: var(--text-color);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-icon {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .social-icon:hover {
-            color: var(--hover-color);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-        }
-
-        .copyright p {
-            margin: 0.5rem 0;
-        }
-
-        .copyright i {
-            color: #ff4444;
-            animation: heartbeat 1.5s ease infinite;
-        }
-
-        @keyframes heartbeat {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .contact-animation {
-                margin-bottom: 2rem;
-            }
-        }
-    </style>
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Shehrose</a>
+                <a class="navbar-brand" href="javascript:void(0);">Shehrose</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -961,42 +44,46 @@
         </nav>
     </header>
 
-    <section id="about" class="about-section">
+    <section class="about-section" id="about">
         <div class="background-elements">
             <div class="floating-shape shape1"></div>
             <div class="floating-shape shape2"></div>
             <div class="floating-shape shape3"></div>
         </div>
-        <div class="container">
-            <div class="about-content">
-                <h1 class="profile-title">Muhammad Shehrose</h1>
-                <h2 class="profile-subtitle">PHP | Laravel Web Developer</h2>
-                <p class="profile-description">
-                    I am a passionate Laravel web developer with over 3 years of experience in building and managing web
-                    applications.
-                    My expertise includes API development, database management, and implementing multisite architectures
-                    to enhance
-                    scalability and performance.
-                </p>
-                <div class="highlight-box">
+
+        <div class="about-content">
+            <div class="content-wrapper">
+                <div class="profile-image">
+                    <img src="assets/img/profile.jpg" alt="Muhammad Shehrose">
+                </div>
+                <div class="text-content">
+                    <h1 class="profile-title">Muhammad Shehrose</h1>
+                    <h2 class="profile-subtitle">PHP | Laravel Web Developer</h2>
                     <p class="profile-description">
-                        I am committed to delivering efficient, user-friendly solutions that meet client needs while
-                        staying
-                        up-to-date with modern web technologies.
+                        I am a passionate Laravel web developer with over 3 years of experience in building and managing
+                        web
+                        applications. My expertise includes API development, database management, and implementing
+                        multisite architectures
+                        to enhance scalability and performance.
                     </p>
-                    <div class="tech-stack">
-                        <div class="tech-icon">
-                            <i class="fab fa-php"></i>
-                        </div>
-                        <div class="tech-icon">
-                            <i class="fab fa-laravel"></i>
-                        </div>
-                        <div class="tech-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="tech-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
+                    <div class="highlight-box">
+                        <p class="mb-0">I am committed to delivering efficient, user-friendly solutions that meet client
+                            needs while staying
+                            up-to-date with modern web technologies.</p>
+                        <!-- <div class="tech-stack">
+                            <div class="tech-icon">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <div class="tech-icon">
+                                <i class="fab fa-laravel"></i>
+                            </div>
+                            <div class="tech-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="tech-icon">
+                                <i class="fab fa-git"></i>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -1037,6 +124,12 @@
                         </div>
                         <p class="skill-name">JavaScript</p>
                     </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <p class="skill-name">jQuery</p>
+                    </div>
                 </div>
 
                 <div class="skills-category fade-in-up" style="animation-delay: 0.4s;">
@@ -1055,6 +148,12 @@
                             <i class="fab fa-laravel"></i>
                         </div>
                         <p class="skill-name">Laravel</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-drupal"></i>
+                        </div>
+                        <p class="skill-name">Drupal</p>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
@@ -1162,24 +261,33 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
 
-            <!-- E-commerce Project -->
             <div class="project-card" style="animation-delay: 0.2s;">
                 <div class="row g-0">
                     <div class="col-md-3">
                         <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C" alt="E-commerce Platform"
+                            <img src="assets/projects/career.PNG" alt="Career Institute – A Laravel-Based CMS"
                                 class="project-image">
                             <div class="image-overlay"></div>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="project-content">
-                            <h3 class="project-title">E-commerce Platform</h3>
-                            <p class="project-description">A full-featured e-commerce platform with multi-vendor
-                                support, real-time inventory management, and secure payment integration. Implementation
-                                of advanced features including real-time notifications, dynamic pricing, and automated
-                                order processing.</p>
+                            <h3 class="project-title">Career Institute – A Laravel-Based CMS</h3>
+                            <p class="project-description">Career Institute is a powerful Content Management System
+                                (CMS) built from scratch in Laravel. It is currently used by more than 12 institutes for
+                                managing their operations efficiently.
+                                <br>
+                                <br>
+                                The system includes a fully dynamic front-end website, controlled entirely from the
+                                admin panel. It offers key modules such as leads management, admissions, expenses,
+                                classes, timetables, and fee management.
+                                <br>
+                                <br>
+                                It also features certificate generation and verification, along with more than 10 types
+                                of reports to help institutes track and analyze their data effectively.
+                            </p>
                             <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
                                 <span class="tech-tag">Laravel</span>
                                 <span class="tech-tag">MySQL</span>
                                 <span class="tech-tag">jQuery</span>
@@ -1195,26 +303,37 @@
                 </div>
             </div>
 
-            <!-- CRM System -->
             <div class="project-card" style="animation-delay: 0.4s;">
                 <div class="row g-0">
                     <div class="col-md-3">
                         <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C" alt="CRM System" class="project-image">
+                            <img src="assets/projects/eshops.JPG" alt="eShops – A Multi-Seller eCommerce Platform"
+                                class="project-image">
                             <div class="image-overlay"></div>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="project-content">
-                            <h3 class="project-title">CRM System</h3>
-                            <p class="project-description">Custom CRM solution with lead management, automated
-                                workflows, and comprehensive reporting dashboard. Features include email integration,
-                                task automation, and customizable sales pipelines.</p>
+                            <h3 class="project-title">eShops – A Multi-Seller eCommerce Platform</h3>
+                            <p class="project-description">eShops is a Laravel-based eCommerce platform built from
+                                scratch. It allows each seller to have their own fully dynamic shop on a separate
+                                subdomain, managed through an admin panel.
+                                <br>
+                                <br>
+                                Key features include category and product management, the ability to resell other
+                                sellers’ products, seller subscriptions, and one-to-one account and transaction
+                                management for users. The system also provides a complete order management module.
+                                <br>
+                                <br>
+                                The same functionality is available in the Flutter app, for which I developed optimized
+                                REST APIs with improved response times.
+                            </p>
                             <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
                                 <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Vue.js</span>
                                 <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">jQuery</span>
+                                <span class="tech-tag">Bootstrap</span>
                             </div>
                             <div class="project-links">
                                 <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
@@ -1226,27 +345,144 @@
                 </div>
             </div>
 
-            <!-- Learning Management System -->
             <div class="project-card" style="animation-delay: 0.6s;">
                 <div class="row g-0">
                     <div class="col-md-3">
                         <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C" alt="Learning Management System"
-                                class="project-image">
+                            <img src="https://placehold.co/400x400/EEE/31343C"
+                                alt="City Police Office FSD – Bail Management System" class="project-image">
                             <div class="image-overlay"></div>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="project-content">
-                            <h3 class="project-title">Learning Management System</h3>
-                            <p class="project-description">Educational platform with course management, student progress
-                                tracking, and interactive learning materials. Includes features like live sessions,
-                                assignment submission, and progress analytics.</p>
+                            <h3 class="project-title">City Police Office FSD – Bail Management System</h3>
+                            <p class="project-description">City Police Office FSD is a Laravel-based CMS built from
+                                scratch. It manages data for individuals released on bail and tracks their monthly
+                                follow-ups.
+                                <br>
+                                <br>
+                                The system supports multiple user roles, each handling different types of data
+                                efficiently. It ensures organized record-keeping and smooth management of follow-up
+                                processes.
+                            </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Laravel</span>
                                 <span class="tech-tag">Ajax</span>
                                 <span class="tech-tag">MySQL</span>
                                 <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link" title="Live Demo"><i
+                                        class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" style="animation-delay: 0.8s;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/400x400/EEE/31343C"
+                                alt="HED - KP (Higher Education Department, Khyber Pakhtunkhwa)" class="project-image">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="project-content">
+                            <h3 class="project-title">HED - KP (Higher Education Department, Khyber Pakhtunkhwa)</h3>
+                            <p class="project-description">HED - KP is a large-scale CMS developed for the Higher
+                                Education Department of Khyber Pakhtunkhwa. Built in Laravel, it features a complex
+                                database with over 150 tables.
+                                <br>
+                                <br>
+                                I worked on the reports module, generating more than 80 types of reports to help with
+                                data analysis and decision-making.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link" title="Live Demo"><i
+                                        class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" style="animation-delay: 1.0s;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/400x400/EEE/31343C"
+                                alt="LinkGesture – SEO Link Management CMS" class="project-image">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="project-content">
+                            <h3 class="project-title">LinkGesture – SEO Link Management CMS</h3>
+                            <p class="project-description">LinkGesture is a Laravel-based CMS built from scratch to
+                                manage SEO links efficiently. It allows publishers to add their blog website links along
+                                with pricing, while users can place their articles on these websites.
+                                <br>
+                                <br>
+                                The system integrates Google Sheets API for seamless import and export of data. A Google
+                                crawler is also implemented to fetch website logos and other relevant information.
+                                <br>
+                                <br>
+                                The admin panel includes a complete eCommerce workflow, featuring cart, checkout, and
+                                order management modules.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Ajax</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">jQuery</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
+                                <a href="#" class="project-link" title="Live Demo"><i
+                                        class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" style="animation-delay: 1.2s;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/400x400/EEE/31343C"
+                                alt="Mansuba-e-Amal (Citizen Portal - KP)" class="project-image">
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="project-content">
+                            <h3 class="project-title">Mansuba-e-Amal (Citizen Portal - KP)</h3>
+                            <p class="project-description">Mansuba-e-Amal is a Laravel-based complaint management system built from scratch. It integrates external APIs for division, district, VC, and NC data.
+                                <br>
+                                <br>
+                                Citizens can submit public complaints, accessible to all users. Complaints go through multiple approval stages based on user roles. Each user is registered under a specific VC/NC and can only file complaints related to their area.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Ajax</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">jQuery</span>
+                                <span class="tech-tag">Bootstrap</span>
                             </div>
                             <div class="project-links">
                                 <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
@@ -1364,52 +600,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sections = document.querySelectorAll("section");
-            const navLinks = document.querySelectorAll(".nav-link");
-
-            function activateNavLink() {
-                let scrollY = window.scrollY;
-
-                sections.forEach((section) => {
-                    let sectionTop = section.offsetTop - 80; // Adjusted for fixed navbar
-                    let sectionHeight = section.offsetHeight;
-                    let sectionId = section.getAttribute("id");
-
-                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                        navLinks.forEach((link) => {
-                            link.classList.remove("active");
-                            if (link.getAttribute("href") === `#${sectionId}`) {
-                                link.classList.add("active");
-                            }
-                        });
-                    }
-                });
-            }
-
-            window.addEventListener("scroll", activateNavLink);
-
-            // Smooth scroll and set active class on click
-            navLinks.forEach((link) => {
-                link.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    let targetId = this.getAttribute("href").substring(1);
-                    let targetSection = document.getElementById(targetId);
-
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 60, // Adjusted for navbar height
-                            behavior: "smooth",
-                        });
-
-                        navLinks.forEach((link) => link.classList.remove("active"));
-                        this.classList.add("active");
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
