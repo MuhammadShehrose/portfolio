@@ -1,606 +1,720 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
-    <title>Muhammad Shehrose</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Shehrose — Laravel Web Developer</title>
+    <meta name="description" content="Senior Laravel Web Developer with 4 years building scalable, high-performance web applications. API development, database design, CMS architecture." />
 
-    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="javascript:void(0);">Shehrose</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#skills">Skills</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#experience">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container-xl">
+            <a class="navbar-brand" href="#">
+                <span class="brand-ms">MS</span>
+                <span class="brand-dot">.</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="hamburger-icon">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-hire" href="mailto:shah.rose.714@gmail.com">Hire Me</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
-
-    <section class="about-section" id="about">
-        <div class="background-elements">
-            <div class="floating-shape shape1"></div>
-            <div class="floating-shape shape2"></div>
-            <div class="floating-shape shape3"></div>
         </div>
+    </nav>
 
-        <div class="about-content">
-            <div class="content-wrapper">
-                <div class="profile-image">
-                    <img src="assets/img/profile.jpg" alt="Muhammad Shehrose">
-                </div>
-                <div class="text-content">
-                    <h1 class="profile-title">Muhammad Shehrose</h1>
-                    <h2 class="profile-subtitle">PHP | Laravel Web Developer</h2>
-                    <p class="profile-description">
-                        I am a passionate Laravel web developer with over 3 years of experience in building and managing
-                        web
-                        applications. My expertise includes API development, database management, and implementing
-                        multisite architectures
-                        to enhance scalability and performance.
+    <!-- ===================== HERO ===================== -->
+    <section class="hero-section" id="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-glow"></div>
+        <div class="container-xl h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-eyebrow reveal-up">
+                        <span class="eyebrow-dot"></span>
+                        <span>Available for opportunities</span>
+                    </div>
+                    <h1 class="hero-title reveal-up delay-1">
+                        Muhammad<br />
+                        <em>Shehrose</em>
+                    </h1>
+                    <div class="hero-role reveal-up delay-2">
+                        <span class="role-line"></span>
+                        <span class="role-text">Laravel Web Developer</span>
+                        <span class="role-years">04 yrs</span>
+                    </div>
+                    <p class="hero-desc reveal-up delay-3">
+                        Building scalable, high-performance web applications with a focus on clean architecture,
+                        robust APIs, and intelligent database design. From CMS systems to government-grade platforms.
                     </p>
-                    <div class="highlight-box">
-                        <p class="mb-0">I am committed to delivering efficient, user-friendly solutions that meet client
-                            needs while staying
-                            up-to-date with modern web technologies.</p>
-                        <!-- <div class="tech-stack">
-                            <div class="tech-icon">
-                                <i class="fab fa-php"></i>
+                    <div class="hero-cta reveal-up delay-4">
+                        <a href="#projects" class="btn btn-primary-custom">
+                            View My Work
+                            <span class="btn-arrow"><i class="bi bi-arrow-right"></i></span>
+                        </a>
+                        <a href="#about" class="btn btn-ghost-custom">
+                            About Me
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-flex justify-content-end">
+                    <div class="hero-avatar-wrapper reveal-left delay-2">
+                        <div class="hero-avatar">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar-ring ring-2"></div>
+                            <div class="avatar-initials">MS</div>
+                            <div class="avatar-badge">
+                                <i class="bi bi-code-slash"></i>
                             </div>
-                            <div class="tech-icon">
-                                <i class="fab fa-laravel"></i>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-card reveal-up delay-3">
+                                <div class="stat-num">4+</div>
+                                <div class="stat-label">Years Exp.</div>
                             </div>
-                            <div class="tech-icon">
-                                <i class="fab fa-js"></i>
+                            <div class="stat-card reveal-up delay-4">
+                                <div class="stat-num">10+</div>
+                                <div class="stat-label">Projects</div>
                             </div>
-                            <div class="tech-icon">
-                                <i class="fab fa-git"></i>
+                            <div class="stat-card reveal-up delay-5">
+                                <div class="stat-num">4</div>
+                                <div class="stat-label">Companies</div>
                             </div>
-                        </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <span class="scroll-line"></span>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about-section section-pad" id="about">
+        <div class="container-xl">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <div class="section-label reveal-up">// Who I Am</div>
+                    <h2 class="section-title reveal-up delay-1">Crafting backends that <em>never</em> break under
+                        pressure</h2>
+                    <p class="section-body reveal-up delay-2">
+                        A Laravel developer with 4 years of building production systems that handle real-world
+                        complexity —
+                        multisite architectures, geofenced tracking, government data platforms, and loyalty engines.
+                    </p>
+                    <p class="section-body reveal-up delay-3">
+                        My work lives at the intersection of clean code and pragmatic engineering. I don't just write
+                        features —
+                        I design systems that scale, APIs that are a pleasure to consume, and databases that perform.
+                    </p>
+                    <div class="about-tags reveal-up delay-4">
+                        <span class="tag">API Architecture</span>
+                        <span class="tag">Database Design</span>
+                        <span class="tag">CMS Systems</span>
+                        <span class="tag">Multisite</span>
+                        <span class="tag">Geofencing</span>
+                        <span class="tag">AI-Assisted Dev</span>
+                    </div>
+                    <div class="contact-row reveal-up delay-5">
+                        <a href="mailto:shah.rose.714@gmail.com" class="contact-link">
+                            <i class="bi bi-envelope-fill"></i>
+                            shah.rose.714@gmail.com
+                        </a>
+                        <a href="tel:+923063305455" class="contact-link">
+                            <i class="bi bi-telephone-fill"></i>
+                            +92-306-3305455
+                        </a>
+                        <span class="contact-link">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            Faisalabad, PK
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="about-visual reveal-left delay-2">
+                        <div class="code-window">
+                            <div class="code-window-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="code-filename">DeveloperProfile.php</span>
+                            </div>
+                            <div class="code-body">
+                                <pre><code><span class="c-purple">&lt;?php</span>
+
+<span class="c-blue">namespace</span> App\Developers;
+
+<span class="c-blue">class</span> <span class="c-green">MuhammadShehrose</span> <span class="c-blue">extends</span> LaravelDeveloper
+{
+    <span class="c-purple">protected</span> <span class="c-blue">array</span> $stack = [
+        <span class="c-orange">'PHP'</span>, <span class="c-orange">'Laravel'</span>, <span class="c-orange">'Livewire'</span>,
+        <span class="c-orange">'REST API'</span>, <span class="c-orange">'MySQL'</span>, <span class="c-orange">'Git'</span>,
+    ];
+
+    <span class="c-purple">protected</span> <span class="c-blue">string</span> $pattern =
+                    <span class="c-orange">'Repository + Service Layer'</span>;
+
+    <span class="c-purple">public function</span> <span class="c-green">expertise</span>(): <span class="c-blue">array</span>
+    {
+        <span class="c-blue">return</span> [
+            <span class="c-orange">'scalable_apis'</span>   => <span class="c-cyan">true</span>,
+            <span class="c-orange">'db_optimization'</span> => <span class="c-cyan">true</span>,
+            <span class="c-orange">'multisite_arch'</span>  => <span class="c-cyan">true</span>,
+            <span class="c-orange">'ai_integration'</span>  => <span class="c-cyan">true</span>,
+        ];
+    }
+}</code></pre>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title fade-in-up">Programming Languages & Tools</h2>
-
-            <div class="skills-grid">
-                <div class="skills-category fade-in-up" style="animation-delay: 0.2s;">
-                    <h3 class="category-title">
-                        <i class="fas fa-code"></i>
-                        Frontend Development
-                    </h3>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <p class="skill-name">HTML5</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <p class="skill-name">CSS3</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-bootstrap"></i>
-                        </div>
-                        <p class="skill-name">Bootstrap</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <p class="skill-name">JavaScript</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <p class="skill-name">jQuery</p>
-                    </div>
-                </div>
-
-                <div class="skills-category fade-in-up" style="animation-delay: 0.4s;">
-                    <h3 class="category-title">
-                        <i class="fas fa-server"></i>
-                        Backend Development
-                    </h3>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-php"></i>
-                        </div>
-                        <p class="skill-name">PHP</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-laravel"></i>
-                        </div>
-                        <p class="skill-name">Laravel</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-drupal"></i>
-                        </div>
-                        <p class="skill-name">Drupal</p>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <p class="skill-name">MySQL</p>
-                    </div>
-                </div>
-
-                <div class="skills-category fade-in-up" style="animation-delay: 0.6s;">
-                    <h3 class="category-title">
-                        <i class="fas fa-cogs"></i>
-                        Workflow & Tools
-                    </h3>
-                    <div class="workflow-item">
-                        <i class="fas fa-layer-group workflow-icon"></i>
-                        <p class="skill-name">Building scalable and modular codebases</p>
-                    </div>
-                    <div class="workflow-item">
-                        <i class="fas fa-sync-alt workflow-icon"></i>
-                        <p class="skill-name">Continuous integration and deployment (CI/CD)</p>
-                    </div>
-                    <div class="workflow-item">
-                        <i class="fas fa-comments workflow-icon"></i>
-                        <p class="skill-name">Effective team communication and documentation</p>
-                    </div>
-                    <div class="workflow-item">
-                        <i class="fab fa-github workflow-icon"></i>
-                        <p class="skill-name">Version control using Git and GitHub</p>
-                    </div>
-                </div>
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="experience-section section-pad" id="experience">
+        <div class="container-xl">
+            <div class="section-header text-center mb-5">
+                <div class="section-label reveal-up">// Career Path</div>
+                <h2 class="section-title reveal-up delay-1">Work <em>Experience</em></h2>
             </div>
-        </div>
-    </section>
-
-    <section id="experience" class="experience-section">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
 
             <div class="timeline">
-                <div class="timeline-item left" style="animation-delay: 0.2s;">
-                    <div class="experience-card">
-                        <h3 class="job-title">Laravel Web Developer</h3>
-                        <div class="company">
-                            <i class="fas fa-building company-icon"></i>
-                            The Sots - Faisalabad
-                        </div>
-                        <div class="date">
-                            <i class="fas fa-calendar-alt"></i>
-                            Feb, 2023 - Present
-                        </div>
-                        <div class="responsibilities">
-                            <div class="responsibility-item">Expert in managing multiple subdomains and developing
-                                multisite architectures</div>
-                            <div class="responsibility-item">Skilled in creating and linking software interfaces (APIs)
+
+                <!-- Job 1 -->
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-marker">
+                        <div class="marker-dot active"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card active-job">
+                            <div class="job-header">
+                                <div>
+                                    <h3 class="job-title">Laravel Web Developer</h3>
+                                    <div class="job-company">Invictus Solutions</div>
+                                </div>
+                                <div class="job-meta">
+                                    <span class="job-badge active">Current</span>
+                                    <span class="job-date">Jul 2025 – Present</span>
+                                </div>
+                            </div>
+                            <p class="job-desc">
+                                Optimized large databases through efficient queries, indexing, and structured schema
+                                design to
+                                improve performance and scalability. Handled data migrations for stable system growth.
+                            </p>
+                            <div class="job-achievements">
+                                <div class="achievement">
+                                    <i class="bi bi-check2-circle"></i>
+                                    Loyalty and Referral Systems + APIs
+                                </div>
+                                <div class="achievement">
+                                    <i class="bi bi-check2-circle"></i>
+                                    Warehouse Management System + APIs
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="timeline-item right" style="animation-delay: 0.4s;">
-                    <div class="experience-card">
-                        <h3 class="job-title">Junior Laravel Web Developer</h3>
-                        <div class="company">
-                            <i class="fas fa-building company-icon"></i>
-                            CSoft Systems - Faisalabad
-                        </div>
-                        <div class="date">
-                            <i class="fas fa-calendar-alt"></i>
-                            July, 2022 - Feb, 2023
-                        </div>
-                        <div class="responsibilities">
-                            <div class="responsibility-item">Skilled in database management with eloquent relationship
+                <!-- Job 2 -->
+                <div class="timeline-item reveal-up delay-1">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card">
+                            <div class="job-header">
+                                <div>
+                                    <h3 class="job-title">Laravel Web Developer</h3>
+                                    <div class="job-company">The Sots</div>
+                                </div>
+                                <div class="job-meta">
+                                    <span class="job-date">Feb 2023 – Jun 2025</span>
+                                </div>
                             </div>
-                            <div class="responsibility-item">Expert in debugging and fixing code issues with jQuery and
-                                Ajax</div>
+                            <p class="job-desc">
+                                Managed subdomain-based multisite architectures for scalable systems. Built and
+                                integrated APIs for
+                                seamless communication. Developed multi-language applications and used Livewire for
+                                dynamic,
+                                interactive features with minimal JavaScript.
+                            </p>
+                            <div class="job-achievements">
+                                <div class="achievement">
+                                    <i class="bi bi-check2-circle"></i>
+                                    eShops — eCommerce Solution + APIs
+                                </div>
+                                <div class="achievement">
+                                    <i class="bi bi-check2-circle"></i>
+                                    Sunny Breeze Tracking System + APIs
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="timeline-item left" style="animation-delay: 0.6s;">
-                    <div class="experience-card">
-                        <h3 class="job-title">Laravel Web Developer (Intern)</h3>
-                        <div class="company">
-                            <i class="fas fa-building company-icon"></i>
-                            RankSol - Faisalabad
-                        </div>
-                        <div class="date">
-                            <i class="fas fa-calendar-alt"></i>
-                            Internship
-                        </div>
-                        <div class="responsibilities">
-                            <div class="responsibility-item">Knowledge of MVC architecture and eloquent relationships
+                <!-- Job 3 -->
+                <div class="timeline-item reveal-up delay-2">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card">
+                            <div class="job-header">
+                                <div>
+                                    <h3 class="job-title">Laravel Web Developer</h3>
+                                    <div class="job-company">CSoft Systems</div>
+                                </div>
+                                <div class="job-meta">
+                                    <span class="job-date">Jul 2022 – Feb 2023</span>
+                                </div>
                             </div>
-                            <div class="responsibility-item">Responsive web design and Laravel packages implementation
+                            <p class="job-desc">
+                                Database management using Eloquent relationships for advanced queries across single and
+                                multiple
+                                databases. Experienced in debugging, resolving code issues, and enhancing UI
+                                interactivity using jQuery and Ajax.
+                            </p>
+                            <div class="job-achievements">
+                                <div class="achievement">
+                                    <i class="bi bi-check2-circle"></i>
+                                    Career Institute — CMS + Dynamic Website
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="timeline-item reveal-up delay-3">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card">
+                            <div class="job-header">
+                                <div>
+                                    <h3 class="job-title">Laravel Web Developer (Intern)</h3>
+                                    <div class="job-company">RankSol</div>
+                                </div>
+                                <div class="job-meta">
+                                    <span class="job-date">Apr 2022 – Jul 2022</span>
+                                </div>
+                            </div>
+                            <p class="job-desc">
+                                Strong in MVC architecture and Eloquent relationships, with experience in responsive
+                                design and
+                                Laravel package integration to improve functionality and performance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="projects-section section-pad" id="projects">
+        <div class="container-xl">
+            <div class="section-header mb-5">
+                <div class="row align-items-end">
+                    <div class="col-lg-7">
+                        <div class="section-label reveal-up">// Selected Work</div>
+                        <h2 class="section-title reveal-up delay-1">Projects that <em>ship</em> to production</h2>
+                    </div>
+                    <div class="col-lg-5 text-lg-end">
+                        <p class="section-body reveal-up delay-2">Real-world systems, not side projects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Project 1: Loyalty & Referral -->
+                <div class="col-12 reveal-up">
+                    <div class="project-card featured">
+                        <div class="project-number">01</div>
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6">
+                                <div class="project-stack">
+                                    <span>Laravel 12</span><span>Blade</span><span>Repository Pattern</span><span>Queue
+                                        Jobs</span>
+                                </div>
+                                <h3 class="project-title">Loyalty & Referral Management System</h3>
+                                <p class="project-desc">
+                                    Full-stack system with separate admin and user panels. Modular architecture using
+                                    Repository Pattern,
+                                    Service classes, and queued jobs for scalable and efficient operations — covering
+                                    user management,
+                                    referrals, bonus points, and product codes.
+                                </p>
+                                <div class="project-deliverables">
+                                    <span><i class="bi bi-globe"></i> Web App</span>
+                                    <span><i class="bi bi-broadcast"></i> REST API</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="project-visual">
+                                    <div class="pv-grid">
+                                        <div class="pv-block pv-accent">Admin Panel</div>
+                                        <div class="pv-block">User Panel</div>
+                                        <div class="pv-block">Referral Engine</div>
+                                        <div class="pv-block pv-accent">Queue Jobs</div>
+                                        <div class="pv-block">Bonus Points</div>
+                                        <div class="pv-block">Product Codes</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Sunny Breeze -->
+                <div class="col-lg-6 reveal-up delay-1">
+                    <div class="project-card">
+                        <div class="project-number">02</div>
+                        <div class="project-stack">
+                            <span>Multi-Language</span><span>Geofencing</span><span>Maps</span><span>Real-time</span>
+                        </div>
+                        <h3 class="project-title">Sunny Breeze Tracking System</h3>
+                        <p class="project-desc">
+                            Employee tracking system monitoring working hours, breaks, and offline activity in real
+                            time.
+                            Location-based task controls enforce geofenced site rules, with a live admin dashboard
+                            showing
+                            real-time employee positions on a map.
+                        </p>
+                        <div class="project-deliverables">
+                            <span><i class="bi bi-globe"></i> Web App</span>
+                            <span><i class="bi bi-broadcast"></i> REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Mansooba-e-Amal -->
+                <div class="col-lg-6 reveal-up delay-2">
+                    <div class="project-card">
+                        <div class="project-number">03</div>
+                        <div class="project-stack">
+                            <span>Government</span><span>VC/NC Auth</span><span>Access Control</span>
+                        </div>
+                        <h3 class="project-title">Mansooba-e-Amal</h3>
+                        <p class="project-desc">
+                            Government project for Khyber Pakhtunkhwa. API development enabling VC/NC-based user
+                            categorization and structured access control. Features for need assessments, tracking
+                            submissions,
+                            and community participation via voting and comments.
+                        </p>
+                        <div class="project-deliverables">
+                            <span><i class="bi bi-shield-check"></i> Gov. Grade</span>
+                            <span><i class="bi bi-broadcast"></i> REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Career Institute -->
+                <div class="col-lg-6 reveal-up delay-1">
+                    <div class="project-card">
+                        <div class="project-number">04</div>
+                        <div class="project-stack">
+                            <span>Laravel CMS</span><span>HR Module</span><span>Reporting</span>
+                        </div>
+                        <h3 class="project-title">Career Institute — IMS</h3>
+                        <p class="project-desc">
+                            Full-featured Institute Management System from scratch — campus, student, HR, course, lead,
+                            and
+                            expense management. Dynamic reporting (daily, weekly, monthly, custom) for financial
+                            tracking and
+                            data-driven decisions.
+                        </p>
+                        <div class="project-deliverables">
+                            <span><i class="bi bi-building"></i> Enterprise</span>
+                            <span><i class="bi bi-bar-chart"></i> Reporting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: eShops -->
+                <div class="col-lg-6 reveal-up delay-2">
+                    <div class="project-card">
+                        <div class="project-number">05</div>
+                        <div class="project-stack">
+                            <span>eCommerce</span><span>Multisite</span><span>Livewire</span>
+                        </div>
+                        <h3 class="project-title">eShops — eCommerce Platform</h3>
+                        <p class="project-desc">
+                            Subdomain-based multisite eCommerce solution with API integration for seamless system
+                            communication. Multi-language support and Livewire-powered dynamic features for
+                            high-performance
+                            storefront experiences.
+                        </p>
+                        <div class="project-deliverables">
+                            <span><i class="bi bi-cart4"></i> eCommerce</span>
+                            <span><i class="bi bi-broadcast"></i> REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section class="skills-section section-pad" id="skills">
+        <div class="container-xl">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="section-label reveal-up">// Technical Stack</div>
+                    <h2 class="section-title reveal-up delay-1">Tools & <em>Technologies</em></h2>
+                    <p class="section-body reveal-up delay-2">
+                        4 years of daily production use — not just side-project familiarity.
+                    </p>
+                    <div class="lang-flags reveal-up delay-3">
+                        <div class="lang-item">
+                            <div class="lang-flag en">EN</div>
+                            <div>
+                                <div class="lang-name">English</div>
+                                <div class="lang-level">Professional Working Proficiency</div>
+                            </div>
+                        </div>
+                        <div class="lang-item">
+                            <div class="lang-flag ur">UR</div>
+                            <div>
+                                <div class="lang-name">Urdu</div>
+                                <div class="lang-level">Native / Bilingual Proficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="skills-grid">
+
+                        <div class="skill-group reveal-up delay-1">
+                            <div class="skill-group-label">Core Backend</div>
+                            <div class="skill-bars">
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>PHP</span><span class="skill-pct">95%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="95"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>Laravel</span><span class="skill-pct">95%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="95"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>Livewire</span><span class="skill-pct">85%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>REST API Design</span><span class="skill-pct">92%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="92"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group reveal-up delay-2">
+                            <div class="skill-group-label">Database & DevOps</div>
+                            <div class="skill-bars">
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>MySQL / DBMS</span><span class="skill-pct">90%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>Git / Version Control</span><span class="skill-pct">88%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="88"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group reveal-up delay-3">
+                            <div class="skill-group-label">Frontend & UI</div>
+                            <div class="skill-bars">
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>Bootstrap / CSS</span><span class="skill-pct">85%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-bar-header">
+                                        <span>JavaScript & jQuery</span><span class="skill-pct">80%</span>
+                                    </div>
+                                    <div class="skill-bar-track">
+                                        <div class="skill-bar-fill" data-width="80"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-group reveal-up delay-4">
+                            <div class="skill-group-label">Specializations</div>
+                            <div class="skill-chips">
+                                <span class="chip"><i class="bi bi-diagram-3"></i> Repository Pattern</span>
+                                <span class="chip"><i class="bi bi-layers"></i> Service Layer</span>
+                                <span class="chip"><i class="bi bi-robot"></i> AI-Assisted Dev</span>
+                                <span class="chip"><i class="bi bi-translate"></i> Multi-Language Apps</span>
+                                <span class="chip"><i class="bi bi-geo-alt"></i> Geofencing</span>
+                                <span class="chip"><i class="bi bi-arrows-angle-expand"></i> Multisite Arch.</span>
+                                <span class="chip"><i class="bi bi-clock-history"></i> Queue Jobs</span>
+                                <span class="chip"><i class="bi bi-bug"></i> Debugging</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-
-            <div class="project-card" style="animation-delay: 0.2s;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <div class="project-image-container">
-                            <img src="assets/projects/career.PNG" alt="Career Institute – A Laravel-Based CMS"
-                                class="project-image">
-                            <div class="image-overlay"></div>
+    <!-- ===================== EDUCATION ===================== -->
+    <!-- <section class="edu-section section-pad">
+        <div class="container-xl">
+            <div class="edu-card reveal-up">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-2 text-lg-center">
+                        <div class="edu-icon">
+                            <i class="bi bi-mortarboard-fill"></i>
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="project-content">
-                            <h3 class="project-title">Career Institute – A Laravel-Based CMS</h3>
-                            <p class="project-description">Career Institute is a powerful Content Management System
-                                (CMS) built from scratch in Laravel. It is currently used by more than 12 institutes for
-                                managing their operations efficiently.
-                                <br>
-                                <br>
-                                The system includes a fully dynamic front-end website, controlled entirely from the
-                                admin panel. It offers key modules such as leads management, admissions, expenses,
-                                classes, timetables, and fee management.
-                                <br>
-                                <br>
-                                It also features certificate generation and verification, along with more than 10 types
-                                of reports to help institutes track and analyze their data effectively.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">PHP</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">jQuery</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link" title="Live Demo"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
+                    <div class="col-lg-7">
+                        <div class="edu-degree">Full Stack Web Development</div>
+                        <div class="edu-school">Career Institute</div>
+                        <p class="edu-desc">
+                            Responsive interfaces using HTML, CSS, Bootstrap, JavaScript, and jQuery.
+                            Dynamic web applications using PHP and MySQL with hands-on end-to-end full-stack
+                            development.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 text-lg-end">
+                        <div class="edu-year">2021</div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section> -->
 
-            <div class="project-card" style="animation-delay: 0.4s;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <div class="project-image-container">
-                            <img src="assets/projects/eshops.JPG" alt="eShops – A Multi-Seller eCommerce Platform"
-                                class="project-image">
-                            <div class="image-overlay"></div>
-                        </div>
+    <!-- ===================== CTA ===================== -->
+    <section class="cta-section section-pad">
+        <div class="container-xl">
+            <div class="cta-wrapper reveal-up">
+                <div class="cta-glow"></div>
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8">
+                        <div class="cta-eyebrow">Ready to work together?</div>
+                        <h2 class="cta-title">Let's build something <em>exceptional</em></h2>
+                        <p class="cta-body">
+                            Whether it's a scalable API, a complex CMS, or a full Laravel application —
+                            I'm ready to bring your ideas to production.
+                        </p>
                     </div>
-                    <div class="col-md-9">
-                        <div class="project-content">
-                            <h3 class="project-title">eShops – A Multi-Seller eCommerce Platform</h3>
-                            <p class="project-description">eShops is a Laravel-based eCommerce platform built from
-                                scratch. It allows each seller to have their own fully dynamic shop on a separate
-                                subdomain, managed through an admin panel.
-                                <br>
-                                <br>
-                                Key features include category and product management, the ability to resell other
-                                sellers’ products, seller subscriptions, and one-to-one account and transaction
-                                management for users. The system also provides a complete order management module.
-                                <br>
-                                <br>
-                                The same functionality is available in the Flutter app, for which I developed optimized
-                                REST APIs with improved response times.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">PHP</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">jQuery</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link" title="Live Demo"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" style="animation-delay: 0.6s;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C"
-                                alt="City Police Office FSD – Bail Management System" class="project-image">
-                            <div class="image-overlay"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="project-content">
-                            <h3 class="project-title">City Police Office FSD – Bail Management System</h3>
-                            <p class="project-description">City Police Office FSD is a Laravel-based CMS built from
-                                scratch. It manages data for individuals released on bail and tracks their monthly
-                                follow-ups.
-                                <br>
-                                <br>
-                                The system supports multiple user roles, each handling different types of data
-                                efficiently. It ensures organized record-keeping and smooth management of follow-up
-                                processes.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Ajax</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link" title="Live Demo"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" style="animation-delay: 0.8s;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C"
-                                alt="HED - KP (Higher Education Department, Khyber Pakhtunkhwa)" class="project-image">
-                            <div class="image-overlay"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="project-content">
-                            <h3 class="project-title">HED - KP (Higher Education Department, Khyber Pakhtunkhwa)</h3>
-                            <p class="project-description">HED - KP is a large-scale CMS developed for the Higher
-                                Education Department of Khyber Pakhtunkhwa. Built in Laravel, it features a complex
-                                database with over 150 tables.
-                                <br>
-                                <br>
-                                I worked on the reports module, generating more than 80 types of reports to help with
-                                data analysis and decision-making.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link" title="Live Demo"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" style="animation-delay: 1.0s;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C"
-                                alt="LinkGesture – SEO Link Management CMS" class="project-image">
-                            <div class="image-overlay"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="project-content">
-                            <h3 class="project-title">LinkGesture – SEO Link Management CMS</h3>
-                            <p class="project-description">LinkGesture is a Laravel-based CMS built from scratch to
-                                manage SEO links efficiently. It allows publishers to add their blog website links along
-                                with pricing, while users can place their articles on these websites.
-                                <br>
-                                <br>
-                                The system integrates Google Sheets API for seamless import and export of data. A Google
-                                crawler is also implemented to fetch website logos and other relevant information.
-                                <br>
-                                <br>
-                                The admin panel includes a complete eCommerce workflow, featuring cart, checkout, and
-                                order management modules.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">PHP</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Ajax</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">jQuery</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link" title="Live Demo"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" style="animation-delay: 1.2s;">
-                <div class="row g-0">
-                    <div class="col-md-3">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/400x400/EEE/31343C"
-                                alt="Mansuba-e-Amal (Citizen Portal - KP)" class="project-image">
-                            <div class="image-overlay"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="project-content">
-                            <h3 class="project-title">Mansuba-e-Amal (Citizen Portal - KP)</h3>
-                            <p class="project-description">Mansuba-e-Amal is a Laravel-based complaint management system built from scratch. It integrates external APIs for division, district, VC, and NC data.
-                                <br>
-                                <br>
-                                Citizens can submit public complaints, accessible to all users. Complaints go through multiple approval stages based on user roles. Each user is registered under a specific VC/NC and can only file complaints related to their area.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">Ajax</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">jQuery</span>
-                                <span class="tech-tag">Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" class="project-link" title="Live Demo"><i
-                                        class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="mailto:shah.rose.714@gmail.com" class="btn btn-primary-custom btn-lg-custom">
+                            Get In Touch
+                            <span class="btn-arrow"><i class="bi bi-arrow-right"></i></span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="contact-animation">
-                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background Elements -->
-                            <defs>
-                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#2A2D3E;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#424769;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-
-                            <!-- Main Circle -->
-                            <circle cx="200" cy="150" r="80" fill="none" stroke="#7077A1" stroke-width="2">
-                                <animate attributeName="r" values="80;85;80" dur="4s" repeatCount="indefinite" />
-                            </circle>
-
-                            <!-- Floating Icons -->
-                            <g fill="#F6B17A">
-                                <!-- Email Icon -->
-                                <path d="M160 120h80v60h-80z" fill="none" stroke="#F6B17A" stroke-width="2">
-                                    <animate attributeName="y" values="120;125;120" dur="3s" repeatCount="indefinite" />
-                                </path>
-                                <path d="M160 120l40 30 40-30" fill="none" stroke="#F6B17A" stroke-width="2">
-                                    <animate attributeName="y" values="120;125;120" dur="3s" repeatCount="indefinite" />
-                                </path>
-
-                                <!-- Phone Icon -->
-                                <rect x="185" y="140" width="30" height="50" rx="5" fill="none" stroke="#F6B17A"
-                                    stroke-width="2">
-                                    <animate attributeName="y" values="140;145;140" dur="4s" repeatCount="indefinite" />
-                                </rect>
-
-                                <!-- Location Pin -->
-                                <circle cx="200" cy="160" r="5" fill="#F6B17A">
-                                    <animate attributeName="cy" values="160;165;160" dur="3.5s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                            </g>
-
-                            <!-- Orbiting Dots -->
-                            <circle cx="200" cy="70" r="3" fill="#F7F7F7">
-                                <animateTransform attributeName="transform" type="rotate" from="0 200 150"
-                                    to="360 200 150" dur="4s" repeatCount="indefinite" />
-                            </circle>
-                            <circle cx="200" cy="230" r="3" fill="#F7F7F7">
-                                <animateTransform attributeName="transform" type="rotate" from="180 200 150"
-                                    to="540 200 150" dur="4s" repeatCount="indefinite" />
-                            </circle>
-                        </svg>
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container-xl">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">MS<span class="brand-dot">.</span></div>
+                    <p class="footer-tagline">Laravel Web Developer</p>
+                </div>
+                <div class="col-lg-4 text-lg-center">
+                    <div class="footer-links">
+                        <a href="#about">About</a>
+                        <a href="#experience">Experience</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#skills">Skills</a>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <a href="tel:+923001234567">+92 300 1234567</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:shehrose@example.com">shehrose@example.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <a href="https://linkedin.com/in/yourusername"
-                                target="_blank">linkedin.com/in/yourusername</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Faisalabad, Pakistan</span>
-                        </div>
+                <div class="col-lg-4 text-lg-end">
+                    <div class="footer-contacts">
+                        <a href="mailto:shah.rose.714@gmail.com">
+                            <i class="bi bi-envelope-fill"></i>
+                        </a>
+                        <a href="tel:+923063305455">
+                            <i class="bi bi-telephone-fill"></i>
+                        </a>
                     </div>
+                    <p class="footer-copy">© 2026 Muhammad Shehrose</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer-section">
-        <div class="container">
-            <div class="social-icons">
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2024 Muhammad Shehrose. All rights reserved.</p>
-                <p>Crafted with <i class="fas fa-heart"></i> and dedication to excellence</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="js/scripts.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
