@@ -603,7 +603,7 @@
     const statNums = document.querySelectorAll('.stat-num');
     if (!statNums.length) return;
 
-    const counts = ['4+', '10+', '4'];
+    const counts = ['4+', '30+', '4'];
     const targets = [4, 30, 4];
 
     const observer = new IntersectionObserver((entries) => {
