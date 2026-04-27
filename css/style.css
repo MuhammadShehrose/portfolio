@@ -38,6 +38,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--nav-h);
+    overflow-x: clip;
 }
 
 body {
@@ -46,6 +47,14 @@ body {
     color: var(--text-primary);
     overflow-x: hidden;
     cursor: none;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
 }
 
 ::selection {
@@ -726,6 +735,7 @@ body.cursor-click .cursor-follower {
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.25s ease;
+    overflow-wrap: anywhere;
 }
 
 .contact-link i {
@@ -1477,7 +1487,7 @@ body.cursor-click .cursor-follower {
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
@@ -1541,6 +1551,29 @@ body.cursor-click .cursor-follower {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(8, 12, 16, 0.95);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1rem;
+        margin-top: 0.75rem;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .navbar-nav {
+        align-items: flex-start !important;
+    }
+
+    .nav-link,
+    .btn-hire {
+        width: 100%;
+    }
+
+    .hero-scroll-hint {
+        display: none;
+    }
+
     .section-pad {
         padding: 70px 0;
     }
@@ -1551,6 +1584,30 @@ body.cursor-click .cursor-follower {
 
     .hero-section {
         padding-top: calc(var(--nav-h) + 2rem);
+    }
+
+    .hero-glow,
+    .cta-glow {
+        max-width: 100%;
+    }
+
+    .hero-desc,
+    .section-body,
+    .job-desc,
+    .project-desc,
+    .cta-body,
+    .lang-level,
+    .footer-copy {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .code-body {
+        padding: 1.25rem;
+    }
+
+    .code-body code {
+        font-size: 0.78rem;
     }
 
     .timeline-item {
@@ -1581,6 +1638,11 @@ body.cursor-click .cursor-follower {
 @media (max-width: 767.98px) {
     .section-pad {
         padding: 55px 0;
+    }
+
+    .hero-eyebrow,
+    .hero-role {
+        flex-wrap: wrap;
     }
 
     .hero-cta {
@@ -1614,6 +1676,18 @@ body.cursor-click .cursor-follower {
         font-size: 2.5rem;
     }
 
+    .project-visual {
+        padding-left: 0;
+    }
+
+    .cta-wrapper {
+        padding: 2rem 1.25rem;
+    }
+
+    .edu-card {
+        padding: 1.5rem 1.25rem;
+    }
+
     body {
         cursor: auto;
     }
@@ -1626,11 +1700,37 @@ body.cursor-click .cursor-follower {
 
 @media (max-width: 575.98px) {
     .hero-title {
-        font-size: 2.6rem;
+        font-size: 2.2rem;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding-bottom: 3rem;
     }
 
     .section-title {
         font-size: 1.8rem;
+    }
+
+    .hero-eyebrow,
+    .role-text,
+    .contact-link,
+    .code-filename {
+        font-size: 0.72rem;
+    }
+
+    .code-window-header {
+        padding: 0.85rem 1rem;
+    }
+
+    .code-body {
+        padding: 1rem;
+    }
+
+    .project-card.featured::before {
+        position: static;
+        display: inline-flex;
+        margin-bottom: 1rem;
     }
 
     .cta-title {
@@ -1643,14 +1743,5 @@ body.cursor-click .cursor-follower {
 
     .cta-wrapper .text-lg-end {
         text-align: center !important;
-    }
-
-    .navbar-collapse {
-        background: rgba(8, 12, 16, 0.95);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1rem;
-        margin-top: 0.5rem;
-        backdrop-filter: blur(12px);
     }
 }
