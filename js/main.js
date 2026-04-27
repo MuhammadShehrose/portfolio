@@ -338,7 +338,7 @@
     top: 0; left: 0;
     height: 2px;
     width: 0%;
-    background: linear-gradient(to right, var(--accent), #00f0c2);
+    background: linear-gradient(to right, var(--accent), var(--accent-strong));
     z-index: 9997;
     transition: width 0.1s linear;
     pointer-events: none;
@@ -416,7 +416,7 @@
    PARTICLE CLICK EFFECT
    ============================================================ */
 (function initParticleClick() {
-    const colors = ['#00d4aa', '#00f0c2', '#ffffff', '#7a8fa6'];
+    const colors = ['#f59e0b', '#fbbf24', '#ffffff', '#a1a1aa'];
 
     document.addEventListener('click', (e) => {
         const target = e.target;
