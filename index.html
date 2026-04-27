@@ -70,6 +70,11 @@
                     <li class="nav-item"><a class="nav-link" href="#skills"><i class="bi bi-grid"></i><span>Skills</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-send"></i><span>Contact</span></a></li>
                     <li class="nav-item ms-lg-3">
+                        <a class="btn btn-resume" target="_blank" href="assets/Shehrose%20Laravel%20Resume.pdf" download="Shehrose-Laravel-Resume.pdf">
+                            <i class="bi bi-download"></i><span>Resume</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
                         <a class="btn btn-hire" href="mailto:shah.rose.714@gmail.com"><i class="bi bi-stars"></i><span>Hire Me</span></a>
                     </li>
                 </ul>
@@ -141,6 +146,10 @@
                             <i class="bi bi-telephone-fill"></i>
                             <span>Call</span>
                         </a>
+                        <a href="https://wa.me/923063305455" target="_blank" class="hero-social-link" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                            <span>Whatsapp</span>
+                        </a>
                         <span class="hero-social-link hero-social-static">
                             <i class="bi bi-geo-alt-fill"></i>
                             <span>Faisalabad, PK</span>
@@ -174,13 +183,13 @@
                                 <div class="stat-label">Years Exp.</div>
                             </div>
                             <div class="stat-card reveal-up delay-4">
-                                <div class="stat-num">10+</div>
+                                <div class="stat-num">30+</div>
                                 <div class="stat-label">Projects</div>
                             </div>
-                            <div class="stat-card reveal-up delay-5">
+                            <!-- <div class="stat-card reveal-up delay-5">
                                 <div class="stat-num">4</div>
                                 <div class="stat-label">Companies</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -260,12 +269,15 @@
 <span class="c-blue">class</span> <span class="c-green">MuhammadShehrose</span> <span class="c-blue">extends</span> LaravelDeveloper
 {
     <span class="c-purple">protected</span> <span class="c-blue">array</span> $stack = [
-        <span class="c-orange">'PHP'</span>, <span class="c-orange">'Laravel'</span>, <span class="c-orange">'Livewire'</span>,
-        <span class="c-orange">'REST API'</span>, <span class="c-orange">'MySQL'</span>, <span class="c-orange">'Git'</span>,
+        <span class="c-orange">'PHP'</span>,
+        <span class="c-orange">'Laravel'</span>,
+        <span class="c-orange">'Livewire'</span>,
+        <span class="c-orange">'REST API'</span>,
+        <span class="c-orange">'MySQL'</span>,
+        <span class="c-orange">'Git'</span>,
     ];
 
-    <span class="c-purple">protected</span> <span class="c-blue">string</span> $pattern =
-                    <span class="c-orange">'Repository + Service Layer'</span>;
+    <span class="c-purple">protected</span> <span class="c-blue">string</span> $pattern = <span class="c-orange">'Repository + Service Layer'</span>;
 
     <span class="c-purple">public function</span> <span class="c-green">expertise</span>(): <span class="c-blue">array</span>
     {
@@ -447,157 +459,247 @@
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="projects-slider reveal-up" data-projects-slider>
+                <div class="projects-slider-shell">
+                    <button class="projects-slider-arrow projects-slider-arrow-prev" type="button" aria-label="Previous project" data-projects-prev>
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
 
-                <!-- Project 1: Loyalty and Referral -->
-                <div class="col-12 reveal-up">
-                    <div class="project-card featured">
-                        <div class="project-number">01</div>
-                        <div class="row align-items-center g-4">
-                            <div class="col-lg-6">
-                                <div class="project-stack">
-                                    <span>Laravel 12</span><span>Blade</span><span>Repository Pattern</span><span>Queue
-                                        Jobs</span>
-                                </div>
-                                <h3 class="project-title">Loyalty &amp; Referral Management System</h3>
-                                <p class="project-desc">
-                                    Full-stack system with separate admin and user panels. Modular architecture using
-                                    Repository Pattern,
-                                    Service classes, and queued jobs for scalable and efficient operations — covering
-                                    user management,
-                                    referrals, bonus points, and product codes.
-                                </p>
-                                <div class="project-deliverables">
-                                    <span><i class="bi bi-globe"></i> Web App</span>
-                                    <span><i class="bi bi-broadcast"></i> REST API</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="project-visual">
-                                    <div class="project-media project-media-featured">
-                                        <div class="project-media-overlay">
-                                            <div class="project-media-chip"><i class="bi bi-shield-lock"></i> Admin Control</div>
-                                            <div class="project-media-chip"><i class="bi bi-gift"></i> Rewards Logic</div>
+                    <div class="projects-slider-viewport" data-projects-viewport>
+                        <div class="projects-slider-track" data-projects-track>
+
+                            <div class="project-slide" data-project-slide>
+                                <!-- Project 1: Loyalty and Referral -->
+                                <div class="project-card featured">
+                                    <div class="project-number">01</div>
+                                    <div class="row align-items-center g-4">
+                                        <div class="col-lg-6">
+                                            <div class="project-stack">
+                                                <span>Laravel 12</span><span>Blade</span><span>Repository Pattern</span><span>Queue
+                                                    Jobs</span>
+                                            </div>
+                                            <h3 class="project-title">Loyalty &amp; Referral Management System</h3>
+                                            <p class="project-desc">
+                                                Full-stack system with separate admin and user panels. Modular architecture using
+                                                Repository Pattern,
+                                                Service classes, and queued jobs for scalable and efficient operations — covering
+                                                user management,
+                                                referrals, bonus points, and product codes.
+                                            </p>
+                                            <div class="project-deliverables">
+                                                <span><i class="bi bi-globe"></i> Web App</span>
+                                                <span><i class="bi bi-broadcast"></i> REST API</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="project-visual">
+                                                <div class="project-media project-media-featured">
+                                                    <div class="project-media-overlay">
+                                                        <div class="project-media-chip"><i class="bi bi-shield-lock"></i> Admin Control</div>
+                                                        <div class="project-media-chip"><i class="bi bi-gift"></i> Rewards Logic</div>
+                                                    </div>
+                                                </div>
+                                                <div class="pv-grid">
+                                                    <div class="pv-block pv-accent">Admin Panel</div>
+                                                    <div class="pv-block">User Panel</div>
+                                                    <div class="pv-block">Referral Engine</div>
+                                                    <div class="pv-block pv-accent">Queue Jobs</div>
+                                                    <div class="pv-block">Bonus Points</div>
+                                                    <div class="pv-block">Product Codes</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="pv-grid">
-                                        <div class="pv-block pv-accent">Admin Panel</div>
-                                        <div class="pv-block">User Panel</div>
-                                        <div class="pv-block">Referral Engine</div>
-                                        <div class="pv-block pv-accent">Queue Jobs</div>
-                                        <div class="pv-block">Bonus Points</div>
-                                        <div class="pv-block">Product Codes</div>
+                                </div>
+                            </div>
+
+                            <div class="project-slide" data-project-slide>
+                                <!-- Project 2: Sunny Breeze -->
+                                <div class="project-card">
+                                    <div class="project-number">02</div>
+                                    <div class="row align-items-center g-4">
+                                        <div class="col-lg-6">
+                                            <div class="project-stack">
+                                                <span>Multi-Language</span><span>Geofencing</span><span>Maps</span><span>Real-time</span>
+                                            </div>
+                                            <h3 class="project-title">Sunny Breeze Tracking System</h3>
+                                            <p class="project-desc">
+                                                Employee tracking system monitoring working hours, breaks, and offline activity in real
+                                                time.
+                                                Location-based task controls enforce geofenced site rules, with a live admin dashboard
+                                                showing
+                                                real-time employee positions on a map.
+                                            </p>
+                                            <div class="project-deliverables">
+                                                <span><i class="bi bi-globe"></i> Web App</span>
+                                                <span><i class="bi bi-broadcast"></i> REST API</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="project-visual">
+                                                <div class="project-media project-media-placeholder tracking-theme">
+                                                    <div class="project-placeholder-content">
+                                                        <i class="bi bi-pin-map-fill"></i>
+                                                        <span>Geo Tracking Dashboard</span>
+                                                    </div>
+                                                </div>
+                                                <div class="pv-grid">
+                                                    <div class="pv-block pv-accent">Live Tracking</div>
+                                                    <div class="pv-block">Geofencing</div>
+                                                    <div class="pv-block">Shift Logs</div>
+                                                    <div class="pv-block">Offline Sync</div>
+                                                    <div class="pv-block pv-accent">Map View</div>
+                                                    <div class="pv-block">Admin Alerts</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Project 2: Sunny Breeze -->
-                <div class="col-lg-6 reveal-up delay-1">
-                    <div class="project-card">
-                        <div class="project-number">02</div>
-                        <div class="project-media project-media-placeholder tracking-theme">
-                            <div class="project-placeholder-content">
-                                <i class="bi bi-pin-map-fill"></i>
-                                <span>Geo Tracking Dashboard</span>
+                            <div class="project-slide" data-project-slide>
+                                <!-- Project 3: Mansooba-e-Amal -->
+                                <div class="project-card">
+                                    <div class="project-number">03</div>
+                                    <div class="row align-items-center g-4">
+                                        <div class="col-lg-6">
+                                            <div class="project-stack">
+                                                <span>Government</span><span>VC/NC Auth</span><span>Access Control</span>
+                                            </div>
+                                            <h3 class="project-title">Mansooba-e-Amal</h3>
+                                            <p class="project-desc">
+                                                Government project for Khyber Pakhtunkhwa. API development enabling VC/NC-based user
+                                                categorization and structured access control. Features for need assessments, tracking
+                                                submissions,
+                                                and community participation via voting and comments.
+                                            </p>
+                                            <div class="project-deliverables">
+                                                <span><i class="bi bi-shield-check"></i> Gov. Grade</span>
+                                                <span><i class="bi bi-broadcast"></i> REST API</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="project-visual">
+                                                <div class="project-media project-media-placeholder gov-theme">
+                                                    <div class="project-placeholder-content">
+                                                        <i class="bi bi-shield-check"></i>
+                                                        <span>Government Workflow Platform</span>
+                                                    </div>
+                                                </div>
+                                                <div class="pv-grid">
+                                                    <div class="pv-block pv-accent">Need Assessments</div>
+                                                    <div class="pv-block">VC/NC Access</div>
+                                                    <div class="pv-block">Submissions</div>
+                                                    <div class="pv-block">Voting</div>
+                                                    <div class="pv-block pv-accent">Comments</div>
+                                                    <div class="pv-block">Audit Trail</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-stack">
-                            <span>Multi-Language</span><span>Geofencing</span><span>Maps</span><span>Real-time</span>
-                        </div>
-                        <h3 class="project-title">Sunny Breeze Tracking System</h3>
-                        <p class="project-desc">
-                            Employee tracking system monitoring working hours, breaks, and offline activity in real
-                            time.
-                            Location-based task controls enforce geofenced site rules, with a live admin dashboard
-                            showing
-                            real-time employee positions on a map.
-                        </p>
-                        <div class="project-deliverables">
-                            <span><i class="bi bi-globe"></i> Web App</span>
-                            <span><i class="bi bi-broadcast"></i> REST API</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Project 3: Mansooba-e-Amal -->
-                <div class="col-lg-6 reveal-up delay-2">
-                    <div class="project-card">
-                        <div class="project-number">03</div>
-                        <div class="project-media project-media-placeholder gov-theme">
-                            <div class="project-placeholder-content">
-                                <i class="bi bi-shield-check"></i>
-                                <span>Government Workflow Platform</span>
+                            <div class="project-slide" data-project-slide>
+                                <!-- Project 4: Career Institute -->
+                                <div class="project-card">
+                                    <div class="project-number">04</div>
+                                    <div class="row align-items-center g-4">
+                                        <div class="col-lg-6">
+                                            <div class="project-stack">
+                                                <span>Laravel CMS</span><span>HR Module</span><span>Reporting</span>
+                                            </div>
+                                            <h3 class="project-title">Career Institute — IMS</h3>
+                                            <p class="project-desc">
+                                                Full-featured Institute Management System from scratch — campus, student, HR, course, lead,
+                                                and
+                                                expense management. Dynamic reporting (daily, weekly, monthly, custom) for financial
+                                                tracking and
+                                                data-driven decisions.
+                                            </p>
+                                            <div class="project-deliverables">
+                                                <span><i class="bi bi-building"></i> Enterprise</span>
+                                                <span><i class="bi bi-bar-chart"></i> Reporting</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="project-visual">
+                                                <div class="project-media">
+                                                    <img src="assets/projects/career.PNG" alt="Career Institute management system preview" class="project-thumb" />
+                                                </div>
+                                                <div class="pv-grid">
+                                                    <div class="pv-block pv-accent">Students</div>
+                                                    <div class="pv-block">HR Module</div>
+                                                    <div class="pv-block">Courses</div>
+                                                    <div class="pv-block">Leads</div>
+                                                    <div class="pv-block pv-accent">Finance</div>
+                                                    <div class="pv-block">Reports</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-stack">
-                            <span>Government</span><span>VC/NC Auth</span><span>Access Control</span>
-                        </div>
-                        <h3 class="project-title">Mansooba-e-Amal</h3>
-                        <p class="project-desc">
-                            Government project for Khyber Pakhtunkhwa. API development enabling VC/NC-based user
-                            categorization and structured access control. Features for need assessments, tracking
-                            submissions,
-                            and community participation via voting and comments.
-                        </p>
-                        <div class="project-deliverables">
-                            <span><i class="bi bi-shield-check"></i> Gov. Grade</span>
-                            <span><i class="bi bi-broadcast"></i> REST API</span>
+
+                            <div class="project-slide" data-project-slide>
+                                <!-- Project 5: eShops -->
+                                <div class="project-card">
+                                    <div class="project-number">05</div>
+                                    <div class="row align-items-center g-4">
+                                        <div class="col-lg-6">
+                                            <div class="project-stack">
+                                                <span>eCommerce</span><span>Multisite</span><span>Livewire</span>
+                                            </div>
+                                            <h3 class="project-title">eShops — eCommerce Platform</h3>
+                                            <p class="project-desc">
+                                                Subdomain-based multisite eCommerce solution with API integration for seamless system
+                                                communication. Multi-language support and Livewire-powered dynamic features for
+                                                high-performance
+                                                storefront experiences.
+                                            </p>
+                                            <div class="project-deliverables">
+                                                <span><i class="bi bi-cart4"></i> eCommerce</span>
+                                                <span><i class="bi bi-broadcast"></i> REST API</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="project-visual">
+                                                <div class="project-media">
+                                                    <img src="assets/projects/eshops.JPG" alt="eShops eCommerce platform preview" class="project-thumb" />
+                                                </div>
+                                                <div class="pv-grid">
+                                                    <div class="pv-block pv-accent">Storefronts</div>
+                                                    <div class="pv-block">Multisite</div>
+                                                    <div class="pv-block">Livewire</div>
+                                                    <div class="pv-block">APIs</div>
+                                                    <div class="pv-block pv-accent">Multi-language</div>
+                                                    <div class="pv-block">Checkout</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+
+                    <button class="projects-slider-arrow projects-slider-arrow-next" type="button" aria-label="Next project" data-projects-next>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
                 </div>
 
-                <!-- Project 4: Career Institute -->
-                <div class="col-lg-6 reveal-up delay-1">
-                    <div class="project-card">
-                        <div class="project-number">04</div>
-                        <div class="project-media">
-                            <img src="assets/projects/career.PNG" alt="Career Institute management system preview" class="project-thumb" />
+                <div class="projects-slider-footer">
+                    <div class="projects-slider-meta">
+                        <div class="projects-slider-status">
+                            <span data-projects-current>01</span>
+                            <span class="projects-slider-status-separator"></span>
+                            <span data-projects-total>05</span>
                         </div>
-                        <div class="project-stack">
-                            <span>Laravel CMS</span><span>HR Module</span><span>Reporting</span>
-                        </div>
-                        <h3 class="project-title">Career Institute — IMS</h3>
-                        <p class="project-desc">
-                            Full-featured Institute Management System from scratch — campus, student, HR, course, lead,
-                            and
-                            expense management. Dynamic reporting (daily, weekly, monthly, custom) for financial
-                            tracking and
-                            data-driven decisions.
-                        </p>
-                        <div class="project-deliverables">
-                            <span><i class="bi bi-building"></i> Enterprise</span>
-                            <span><i class="bi bi-bar-chart"></i> Reporting</span>
-                        </div>
+                        <div class="projects-slider-hint">Drag, swipe, or use arrows</div>
                     </div>
+                    <div class="projects-slider-dots" data-projects-dots aria-label="Project slides"></div>
                 </div>
-
-                <!-- Project 5: eShops -->
-                <div class="col-lg-6 reveal-up delay-2">
-                    <div class="project-card">
-                        <div class="project-number">05</div>
-                        <div class="project-media">
-                            <img src="assets/projects/eshops.JPG" alt="eShops eCommerce platform preview" class="project-thumb" />
-                        </div>
-                        <div class="project-stack">
-                            <span>eCommerce</span><span>Multisite</span><span>Livewire</span>
-                        </div>
-                        <h3 class="project-title">eShops — eCommerce Platform</h3>
-                        <p class="project-desc">
-                            Subdomain-based multisite eCommerce solution with API integration for seamless system
-                            communication. Multi-language support and Livewire-powered dynamic features for
-                            high-performance
-                            storefront experiences.
-                        </p>
-                        <div class="project-deliverables">
-                            <span><i class="bi bi-cart4"></i> eCommerce</span>
-                            <span><i class="bi bi-broadcast"></i> REST API</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -832,8 +934,8 @@
                         <a href="tel:+923063305455">
                             <i class="bi bi-telephone-fill"></i>
                         </a>
-                        <a href="#contact">
-                            <i class="bi bi-send-fill"></i>
+                        <a href="https://wa.me/923063305455" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
                         </a>
                     </div>
                     <p class="footer-copy">© 2026 Muhammad Shehrose</p>

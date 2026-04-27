@@ -10,6 +10,7 @@
     const cursor = document.getElementById('cursor');
     const follower = document.getElementById('cursorFollower');
     if (!cursor || !follower) return;
+    const hoverSelector = 'a, button, [data-cursor="hover"], .project-card, .job-card, .stat-card, .chip, .tag, .projects-slider-dot';
 
     let mouseX = 0, mouseY = 0;
     let followerX = 0, followerY = 0;
@@ -31,11 +32,20 @@
     }
     animateFollower();
 
-    // Hover state
-    const hoverEls = document.querySelectorAll('a, button, [data-cursor="hover"], .project-card, .job-card, .stat-card, .chip, .tag');
-    hoverEls.forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    // Hover state via delegation so dynamically created slider clones inherit it
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest(hoverSelector)) {
+            document.body.classList.add('cursor-hover');
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const leaving = e.target.closest(hoverSelector);
+        const entering = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(hoverSelector) : null;
+
+        if (leaving && leaving !== entering) {
+            document.body.classList.remove('cursor-hover');
+        }
     });
 
     // Click state
@@ -197,23 +207,256 @@
    PROJECT CARD TILT
    ============================================================ */
 (function initCardTilt() {
-    const cards = document.querySelectorAll('.project-card, .job-card');
+    function bindCardTilt(scope = document) {
+        const cards = scope.querySelectorAll('.project-card, .job-card');
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const cx = rect.width / 2;
-            const cy = rect.height / 2;
-            const dx = (e.clientX - rect.left - cx) / cx;
-            const dy = (e.clientY - rect.top - cy) / cy;
+        cards.forEach(card => {
+            if (card.dataset.tiltBound === 'true') return;
 
-            card.style.transform = `perspective(800px) rotateY(${dx * 3}deg) rotateX(${-dy * 2}deg) translateY(-4px)`;
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const dx = (e.clientX - rect.left - cx) / cx;
+                const dy = (e.clientY - rect.top - cy) / cy;
+
+                card.style.transform = `perspective(800px) rotateY(${dx * 3}deg) rotateX(${-dy * 2}deg) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+
+            card.dataset.tiltBound = 'true';
+        });
+    }
+
+    bindCardTilt();
+    window.bindPortfolioCardTilt = bindCardTilt;
+})();
+
+/* ============================================================
+   PROJECTS SLIDER
+   ============================================================ */
+(function initProjectsSlider() {
+    const slider = document.querySelector('[data-projects-slider]');
+    if (!slider) return;
+
+    const viewport = slider.querySelector('[data-projects-viewport]');
+    const track = slider.querySelector('[data-projects-track]');
+    const prevBtn = slider.querySelector('[data-projects-prev]');
+    const nextBtn = slider.querySelector('[data-projects-next]');
+    const dotsWrap = slider.querySelector('[data-projects-dots]');
+    const currentEl = slider.querySelector('[data-projects-current]');
+    const totalEl = slider.querySelector('[data-projects-total]');
+    const originalSlides = Array.from(track.querySelectorAll('[data-project-slide]'));
+    if (!viewport || !track || originalSlides.length < 2) return;
+
+    const slideCount = originalSlides.length;
+    const cloneCount = Math.min(2, slideCount);
+    let currentIndex = cloneCount;
+    let currentTranslate = 0;
+    let isTransitioning = false;
+    let isDragging = false;
+    let pointerId = null;
+    let dragStartX = 0;
+    let dragStartTranslate = 0;
+
+    originalSlides.forEach((slide, index) => {
+        slide.dataset.realIndex = String(index);
+    });
+
+    if (totalEl) {
+        totalEl.textContent = String(slideCount).padStart(2, '0');
+    }
+
+    const prependClones = originalSlides.slice(-cloneCount).map(slide => slide.cloneNode(true));
+    const appendClones = originalSlides.slice(0, cloneCount).map(slide => slide.cloneNode(true));
+
+    prependClones.forEach((slide, offset) => {
+        slide.dataset.realIndex = String(slideCount - cloneCount + offset);
+        slide.dataset.clone = 'true';
+    });
+
+    appendClones.forEach((slide, offset) => {
+        slide.dataset.realIndex = String(offset);
+        slide.dataset.clone = 'true';
+    });
+
+    prependClones.reverse().forEach(slide => track.prepend(slide));
+    appendClones.forEach(slide => track.append(slide));
+
+    if (typeof window.bindPortfolioCardTilt === 'function') {
+        window.bindPortfolioCardTilt(track);
+    }
+
+    const dots = originalSlides.map((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'projects-slider-dot';
+        dot.setAttribute('aria-label', `Go to project ${index + 1}`);
+        dot.dataset.dotIndex = String(index);
+        dotsWrap.appendChild(dot);
+        return dot;
+    });
+
+    function getSlides() {
+        return Array.from(track.querySelectorAll('[data-project-slide]'));
+    }
+
+    function getRealIndex(physicalIndex) {
+        return ((physicalIndex - cloneCount) % slideCount + slideCount) % slideCount;
+    }
+
+    function getNearestPhysicalIndex(targetRealIndex) {
+        const candidates = getSlides()
+            .map((slide, index) => ({ index, realIndex: Number(slide.dataset.realIndex) }))
+            .filter(slide => slide.realIndex === targetRealIndex);
+
+        return candidates.reduce((closest, candidate) => {
+            if (!closest) return candidate;
+            return Math.abs(candidate.index - currentIndex) < Math.abs(closest.index - currentIndex) ? candidate : closest;
+        }, null)?.index ?? targetRealIndex + cloneCount;
+    }
+
+    function getOffsetForIndex(index) {
+        const slides = getSlides();
+        const slide = slides[index];
+        if (!slide) return 0;
+        return slide.offsetLeft - ((viewport.clientWidth - slide.offsetWidth) / 2);
+    }
+
+    function applyTranslate(value, animate = true) {
+        track.style.transition = animate ? 'transform 0.72s cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
+        track.style.transform = `translate3d(${-value}px, 0, 0)`;
+        currentTranslate = value;
+    }
+
+    function updateVisualState() {
+        const slides = getSlides();
+        const activeRealIndex = getRealIndex(currentIndex);
+        const prevRealIndex = (activeRealIndex - 1 + slideCount) % slideCount;
+        const nextRealIndex = (activeRealIndex + 1) % slideCount;
+
+        slides.forEach((slide, index) => {
+            const realIndex = Number(slide.dataset.realIndex);
+            slide.classList.remove('is-active', 'is-prev', 'is-next');
+            slide.setAttribute('aria-hidden', 'true');
+
+            if (index === currentIndex) {
+                slide.classList.add('is-active');
+                slide.setAttribute('aria-hidden', 'false');
+            } else if (realIndex === prevRealIndex) {
+                slide.classList.add('is-prev');
+            } else if (realIndex === nextRealIndex) {
+                slide.classList.add('is-next');
+            }
         });
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('is-active', index === activeRealIndex);
+            dot.setAttribute('aria-current', index === activeRealIndex ? 'true' : 'false');
+        });
+
+        if (currentEl) {
+            currentEl.textContent = String(activeRealIndex + 1).padStart(2, '0');
+        }
+    }
+
+    function syncLoopPosition() {
+        if (currentIndex >= slideCount + cloneCount) {
+            currentIndex -= slideCount;
+            applyTranslate(getOffsetForIndex(currentIndex), false);
+        } else if (currentIndex < cloneCount) {
+            currentIndex += slideCount;
+            applyTranslate(getOffsetForIndex(currentIndex), false);
+        }
+    }
+
+    function goTo(index, animate = true) {
+        currentIndex = index;
+        updateVisualState();
+        applyTranslate(getOffsetForIndex(currentIndex), animate);
+        isTransitioning = animate;
+    }
+
+    function moveBy(step) {
+        if (isTransitioning) return;
+        goTo(currentIndex + step, true);
+    }
+
+    function handlePointerDown(e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+        isDragging = true;
+        pointerId = e.pointerId;
+        dragStartX = e.clientX;
+        dragStartTranslate = currentTranslate;
+        viewport.classList.add('is-dragging');
+        viewport.setPointerCapture(pointerId);
+        track.style.transition = 'none';
+    }
+
+    function handlePointerMove(e) {
+        if (!isDragging || e.pointerId !== pointerId) return;
+        const deltaX = e.clientX - dragStartX;
+        applyTranslate(dragStartTranslate - deltaX, false);
+    }
+
+    function handlePointerUp(e) {
+        if (!isDragging || e.pointerId !== pointerId) return;
+
+        const deltaX = e.clientX - dragStartX;
+        const threshold = Math.min(120, viewport.clientWidth * 0.12);
+
+        isDragging = false;
+        pointerId = null;
+        viewport.classList.remove('is-dragging');
+
+        if (Math.abs(deltaX) > threshold) {
+            moveBy(deltaX < 0 ? 1 : -1);
+        } else {
+            goTo(currentIndex, true);
+        }
+    }
+
+    prevBtn.addEventListener('click', () => moveBy(-1));
+    nextBtn.addEventListener('click', () => moveBy(1));
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goTo(getNearestPhysicalIndex(index), true);
         });
     });
+
+    viewport.addEventListener('pointerdown', handlePointerDown);
+    viewport.addEventListener('pointermove', handlePointerMove);
+    viewport.addEventListener('pointerup', handlePointerUp);
+    viewport.addEventListener('pointercancel', handlePointerUp);
+    viewport.addEventListener('lostpointercapture', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        pointerId = null;
+        viewport.classList.remove('is-dragging');
+        goTo(currentIndex, true);
+    });
+
+    track.addEventListener('transitionend', () => {
+        if (!isTransitioning) return;
+        isTransitioning = false;
+        syncLoopPosition();
+        updateVisualState();
+    });
+
+    window.addEventListener('resize', () => {
+        requestAnimationFrame(() => goTo(currentIndex, false));
+    });
+
+    window.addEventListener('load', () => {
+        requestAnimationFrame(() => goTo(currentIndex, false));
+    });
+
+    goTo(currentIndex, false);
 })();
 
 /* ============================================================
@@ -361,7 +604,7 @@
     if (!statNums.length) return;
 
     const counts = ['4+', '10+', '4'];
-    const targets = [4, 10, 4];
+    const targets = [4, 30, 4];
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
