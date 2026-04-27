@@ -1985,6 +1985,107 @@ body.cursor-click .cursor-follower {
 }
 
 /* ============================================================
+   STRENGTHS SECTION
+   ============================================================ */
+.strengths-section {
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.strengths-section::before,
+.strengths-section::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.strengths-section::before {
+    top: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-accent), transparent);
+}
+
+.strengths-section::after {
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 16%, transparent 84%, rgba(255, 255, 255, 0.015));
+}
+
+.strengths-grid {
+    position: relative;
+    z-index: 1;
+}
+
+.strength-card {
+    height: 100%;
+    padding: 1.6rem;
+    border-radius: 22px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.strength-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.strength-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.strength-card:hover::after {
+    opacity: 1;
+}
+
+.strength-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.strength-icon i {
+    font-size: 1.1rem;
+}
+
+.strength-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+}
+
+.strength-desc {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 32ch;
+}
+
+/* ============================================================
    EDUCATION SECTION
    ============================================================ */
 .edu-section {
@@ -2334,6 +2435,10 @@ body.cursor-click .cursor-follower {
         max-width: 420px;
     }
 
+    .strength-card {
+        padding: 1.4rem;
+    }
+
     .project-media-featured {
         min-height: 220px;
     }
@@ -2457,6 +2562,10 @@ body.cursor-click .cursor-follower {
         text-align: right;
     }
 
+    .strength-card {
+        padding: 1.3rem;
+    }
+
     .section-pad {
         padding: 55px 0;
     }
@@ -2569,6 +2678,15 @@ body.cursor-click .cursor-follower {
 
     .projects-slider-hint {
         text-align: left;
+    }
+
+    .strength-card {
+        padding: 1.2rem;
+        border-radius: 18px;
+    }
+
+    .strength-title {
+        font-size: 1.05rem;
     }
 
     .hero-title {
