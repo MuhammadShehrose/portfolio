@@ -1,720 +1,109 @@
-/**
- * Muhammad Shehrose Portfolio — main.js
- * Scroll animations, custom cursor, mouse parallax, click effects
- */
+(() => {
+  'use strict';
 
-/* ============================================================
-   CUSTOM CURSOR
-   ============================================================ */
-(function initCursor() {
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursorFollower');
-    if (!cursor || !follower) return;
-    const hoverSelector = 'a, button, [data-cursor="hover"], .project-card, .job-card, .stat-card, .chip, .tag, .projects-slider-dot';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const header = document.querySelector('[data-header]');
+  const menuButton = document.querySelector('[data-menu-toggle]');
+  const navigation = document.querySelector('[data-nav]');
+  const backToTop = document.querySelector('[data-back-to-top]');
 
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-    let rafId = null;
+  function setMenu(open) {
+    if (!menuButton || !navigation) return;
+    navigation.classList.toggle('open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    document.body.classList.toggle('menu-open', open);
+  }
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
+  menuButton?.addEventListener('click', () => {
+    setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMenu(false);
+  });
+
+  document.addEventListener('click', event => {
+    if (!navigation?.classList.contains('open')) return;
+    if (!navigation.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const hash = link.getAttribute('href');
+      if (!hash || hash === '#') return;
+      const target = document.getElementById(hash.slice(1));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+      setMenu(false);
     });
+  });
 
-    function animateFollower() {
-        followerX += (mouseX - followerX) * 0.1;
-        followerY += (mouseY - followerY) * 0.1;
-        follower.style.left = followerX + 'px';
-        follower.style.top = followerY + 'px';
-        rafId = requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-
-    // Hover state via delegation so dynamically created slider clones inherit it
-    document.addEventListener('mouseover', (e) => {
-        if (e.target.closest(hoverSelector)) {
-            document.body.classList.add('cursor-hover');
-        }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-        const leaving = e.target.closest(hoverSelector);
-        const entering = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest(hoverSelector) : null;
-
-        if (leaving && leaving !== entering) {
-            document.body.classList.remove('cursor-hover');
-        }
-    });
-
-    // Click state
-    document.addEventListener('mousedown', () => {
-        document.body.classList.add('cursor-click');
-    });
-    document.addEventListener('mouseup', () => {
-        document.body.classList.remove('cursor-click');
-    });
-
-    // Hide cursor when leaving window
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-        follower.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = '';
-        follower.style.opacity = '';
-    });
-})();
-
-/* ============================================================
-   NAVBAR SCROLL BEHAVIOR
-   ============================================================ */
-(function initNavbar() {
-    const nav = document.getElementById('mainNav');
-    if (!nav) return;
-
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-
-        // Add scrolled class
-        if (scrollY > 20) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-
-        // Subtle hide/show on scroll direction
-        if (scrollY > lastScroll && scrollY > 200) {
-            nav.style.transform = 'translateY(-100%)';
-        } else {
-            nav.style.transform = 'translateY(0)';
-        }
-        lastScroll = scrollY;
-    }, { passive: true });
-
-    // Add CSS transition for hide/show
-    nav.style.transition = 'background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, transform 0.4s ease';
-})();
-
-/* ============================================================
-   SCROLL REVEAL (IntersectionObserver)
-   ============================================================ */
-(function initReveal() {
-    const revealEls = document.querySelectorAll('.reveal-up, .reveal-left');
-    if (!revealEls.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
+  const sections = [...document.querySelectorAll('[data-section]')];
+  const navLinks = [...document.querySelectorAll('.nav-link')];
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => {
+          const active = link.getAttribute('href') === `#${entry.target.id}`;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
         });
-    }, {
-        root: null,
-        rootMargin: '0px 0px -60px 0px',
-        threshold: 0.1
+      });
+    }, { rootMargin: '-28% 0px -62% 0px', threshold: 0 });
+    sections.forEach(section => sectionObserver.observe(section));
+  }
+
+  const revealItems = [...document.querySelectorAll('.reveal')];
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+    revealItems.forEach(item => item.classList.add('visible'));
+  } else {
+    document.querySelectorAll('[data-stagger]').forEach(group => {
+      [...group.querySelectorAll('.reveal')].forEach((item, index) => {
+        item.style.transitionDelay = `${Math.min(index * 45, 360)}ms`;
+      });
     });
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealItems.forEach(item => revealObserver.observe(item));
+  }
 
-    revealEls.forEach(el => observer.observe(el));
-})();
+  const timeline = document.querySelector('[data-timeline]');
+  const timelineProgress = document.querySelector('[data-timeline-progress]');
+  let ticking = false;
 
-/* ============================================================
-   SKILL BAR ANIMATION
-   ============================================================ */
-(function initSkillBars() {
-    const fills = document.querySelectorAll('.skill-bar-fill');
-    if (!fills.length) return;
+  function updateScrollState() {
+    const y = window.scrollY;
+    header?.classList.toggle('scrolled', y > 24);
+    backToTop?.classList.toggle('visible', y > 700);
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const fill = entry.target;
-                const w = fill.getAttribute('data-width');
-                setTimeout(() => {
-                    fill.style.width = w + '%';
-                }, 200);
-                observer.unobserve(fill);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    fills.forEach(fill => observer.observe(fill));
-})();
-
-/* ============================================================
-   MOUSE PARALLAX — Hero Section
-   ============================================================ */
-(function initParallax() {
-    const hero = document.querySelector('.hero-section');
-    if (!hero) return;
-
-    const heroGlow = hero.querySelector('.hero-glow');
-    const avatar = hero.querySelector('.hero-avatar');
-
-    hero.addEventListener('mousemove', (e) => {
-        const rect = hero.getBoundingClientRect();
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const dx = (e.clientX - rect.left - cx) / cx;
-        const dy = (e.clientY - rect.top - cy) / cy;
-
-        if (heroGlow) {
-            heroGlow.style.transform = `translate(${dx * 30}px, ${dy * 20}px)`;
-        }
-        if (avatar) {
-            avatar.style.transform = `perspective(600px) rotateY(${dx * 6}deg) rotateX(${-dy * 4}deg) translateZ(10px)`;
-        }
-    });
-
-    hero.addEventListener('mouseleave', () => {
-        if (heroGlow) heroGlow.style.transform = '';
-        if (avatar) avatar.style.transform = '';
-    });
-})();
-
-/* ============================================================
-   MOUSE PARALLAX — Code Window
-   ============================================================ */
-(function initCodeWindowParallax() {
-    const codeWindow = document.querySelector('.code-window');
-    if (!codeWindow) return;
-
-    const wrapper = codeWindow.closest('.about-visual');
-    if (!wrapper) return;
-
-    wrapper.addEventListener('mousemove', (e) => {
-        const rect = wrapper.getBoundingClientRect();
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const dx = (e.clientX - rect.left - cx) / cx;
-        const dy = (e.clientY - rect.top - cy) / cy;
-
-        codeWindow.style.transform = `perspective(800px) rotateY(${dx * 4}deg) rotateX(${-dy * 3}deg) translateZ(8px)`;
-        codeWindow.style.boxShadow = `${-dx * 20}px ${-dy * 20}px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03)`;
-    });
-
-    wrapper.addEventListener('mouseleave', () => {
-        codeWindow.style.transform = '';
-        codeWindow.style.boxShadow = '';
-    });
-})();
-
-/* ============================================================
-   PROJECT CARD TILT
-   ============================================================ */
-(function initCardTilt() {
-    function bindCardTilt(scope = document) {
-        const cards = scope.querySelectorAll('.project-card, .job-card');
-
-        cards.forEach(card => {
-            if (card.dataset.tiltBound === 'true') return;
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const cx = rect.width / 2;
-                const cy = rect.height / 2;
-                const dx = (e.clientX - rect.left - cx) / cx;
-                const dy = (e.clientY - rect.top - cy) / cy;
-
-                card.style.transform = `perspective(800px) rotateY(${dx * 3}deg) rotateX(${-dy * 2}deg) translateY(-4px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-            });
-
-            card.dataset.tiltBound = 'true';
-        });
+    if (timeline && timelineProgress && !reducedMotion.matches) {
+      const rect = timeline.getBoundingClientRect();
+      const start = window.innerHeight * 0.72;
+      const progress = Math.max(0, Math.min(1, (start - rect.top) / (rect.height + start * 0.35)));
+      timelineProgress.style.height = `${progress * Math.max(0, rect.height - 30)}px`;
     }
-
-    bindCardTilt();
-    window.bindPortfolioCardTilt = bindCardTilt;
-})();
-
-/* ============================================================
-   PROJECTS SLIDER
-   ============================================================ */
-(function initProjectsSlider() {
-    const slider = document.querySelector('[data-projects-slider]');
-    if (!slider) return;
-
-    const viewport = slider.querySelector('[data-projects-viewport]');
-    const track = slider.querySelector('[data-projects-track]');
-    const prevBtn = slider.querySelector('[data-projects-prev]');
-    const nextBtn = slider.querySelector('[data-projects-next]');
-    const dotsWrap = slider.querySelector('[data-projects-dots]');
-    const currentEl = slider.querySelector('[data-projects-current]');
-    const totalEl = slider.querySelector('[data-projects-total]');
-    const originalSlides = Array.from(track.querySelectorAll('[data-project-slide]'));
-    if (!viewport || !track || originalSlides.length < 2) return;
-
-    const slideCount = originalSlides.length;
-    const cloneCount = Math.min(2, slideCount);
-    let currentIndex = cloneCount;
-    let currentTranslate = 0;
-    let isTransitioning = false;
-    let isDragging = false;
-    let pointerId = null;
-    let dragStartX = 0;
-    let dragStartTranslate = 0;
-
-    originalSlides.forEach((slide, index) => {
-        slide.dataset.realIndex = String(index);
-    });
-
-    if (totalEl) {
-        totalEl.textContent = String(slideCount).padStart(2, '0');
-    }
-
-    const prependClones = originalSlides.slice(-cloneCount).map(slide => slide.cloneNode(true));
-    const appendClones = originalSlides.slice(0, cloneCount).map(slide => slide.cloneNode(true));
-
-    prependClones.forEach((slide, offset) => {
-        slide.dataset.realIndex = String(slideCount - cloneCount + offset);
-        slide.dataset.clone = 'true';
-    });
-
-    appendClones.forEach((slide, offset) => {
-        slide.dataset.realIndex = String(offset);
-        slide.dataset.clone = 'true';
-    });
-
-    prependClones.reverse().forEach(slide => track.prepend(slide));
-    appendClones.forEach(slide => track.append(slide));
-
-    if (typeof window.bindPortfolioCardTilt === 'function') {
-        window.bindPortfolioCardTilt(track);
-    }
-
-    const dots = originalSlides.map((_, index) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = 'projects-slider-dot';
-        dot.setAttribute('aria-label', `Go to project ${index + 1}`);
-        dot.dataset.dotIndex = String(index);
-        dotsWrap.appendChild(dot);
-        return dot;
-    });
-
-    function getSlides() {
-        return Array.from(track.querySelectorAll('[data-project-slide]'));
-    }
-
-    function getRealIndex(physicalIndex) {
-        return ((physicalIndex - cloneCount) % slideCount + slideCount) % slideCount;
-    }
-
-    function getNearestPhysicalIndex(targetRealIndex) {
-        const candidates = getSlides()
-            .map((slide, index) => ({ index, realIndex: Number(slide.dataset.realIndex) }))
-            .filter(slide => slide.realIndex === targetRealIndex);
-
-        return candidates.reduce((closest, candidate) => {
-            if (!closest) return candidate;
-            return Math.abs(candidate.index - currentIndex) < Math.abs(closest.index - currentIndex) ? candidate : closest;
-        }, null)?.index ?? targetRealIndex + cloneCount;
-    }
-
-    function getOffsetForIndex(index) {
-        const slides = getSlides();
-        const slide = slides[index];
-        if (!slide) return 0;
-        return slide.offsetLeft - ((viewport.clientWidth - slide.offsetWidth) / 2);
-    }
-
-    function applyTranslate(value, animate = true) {
-        track.style.transition = animate ? 'transform 0.72s cubic-bezier(0.22, 1, 0.36, 1)' : 'none';
-        track.style.transform = `translate3d(${-value}px, 0, 0)`;
-        currentTranslate = value;
-    }
-
-    function updateVisualState() {
-        const slides = getSlides();
-        const activeRealIndex = getRealIndex(currentIndex);
-        const prevRealIndex = (activeRealIndex - 1 + slideCount) % slideCount;
-        const nextRealIndex = (activeRealIndex + 1) % slideCount;
-
-        slides.forEach((slide, index) => {
-            const realIndex = Number(slide.dataset.realIndex);
-            slide.classList.remove('is-active', 'is-prev', 'is-next');
-            slide.setAttribute('aria-hidden', 'true');
-
-            if (index === currentIndex) {
-                slide.classList.add('is-active');
-                slide.setAttribute('aria-hidden', 'false');
-            } else if (realIndex === prevRealIndex) {
-                slide.classList.add('is-prev');
-            } else if (realIndex === nextRealIndex) {
-                slide.classList.add('is-next');
-            }
-        });
-
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('is-active', index === activeRealIndex);
-            dot.setAttribute('aria-current', index === activeRealIndex ? 'true' : 'false');
-        });
-
-        if (currentEl) {
-            currentEl.textContent = String(activeRealIndex + 1).padStart(2, '0');
-        }
-    }
-
-    function syncLoopPosition() {
-        if (currentIndex >= slideCount + cloneCount) {
-            currentIndex -= slideCount;
-            applyTranslate(getOffsetForIndex(currentIndex), false);
-        } else if (currentIndex < cloneCount) {
-            currentIndex += slideCount;
-            applyTranslate(getOffsetForIndex(currentIndex), false);
-        }
-    }
-
-    function goTo(index, animate = true) {
-        currentIndex = index;
-        updateVisualState();
-        applyTranslate(getOffsetForIndex(currentIndex), animate);
-        isTransitioning = animate;
-    }
-
-    function moveBy(step) {
-        if (isTransitioning) return;
-        goTo(currentIndex + step, true);
-    }
-
-    function handlePointerDown(e) {
-        if (e.pointerType === 'mouse' && e.button !== 0) return;
-
-        isDragging = true;
-        pointerId = e.pointerId;
-        dragStartX = e.clientX;
-        dragStartTranslate = currentTranslate;
-        viewport.classList.add('is-dragging');
-        viewport.setPointerCapture(pointerId);
-        track.style.transition = 'none';
-    }
-
-    function handlePointerMove(e) {
-        if (!isDragging || e.pointerId !== pointerId) return;
-        const deltaX = e.clientX - dragStartX;
-        applyTranslate(dragStartTranslate - deltaX, false);
-    }
-
-    function handlePointerUp(e) {
-        if (!isDragging || e.pointerId !== pointerId) return;
-
-        const deltaX = e.clientX - dragStartX;
-        const threshold = Math.min(120, viewport.clientWidth * 0.12);
-
-        isDragging = false;
-        pointerId = null;
-        viewport.classList.remove('is-dragging');
-
-        if (Math.abs(deltaX) > threshold) {
-            moveBy(deltaX < 0 ? 1 : -1);
-        } else {
-            goTo(currentIndex, true);
-        }
-    }
-
-    prevBtn.addEventListener('click', () => moveBy(-1));
-    nextBtn.addEventListener('click', () => moveBy(1));
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            goTo(getNearestPhysicalIndex(index), true);
-        });
-    });
-
-    viewport.addEventListener('pointerdown', handlePointerDown);
-    viewport.addEventListener('pointermove', handlePointerMove);
-    viewport.addEventListener('pointerup', handlePointerUp);
-    viewport.addEventListener('pointercancel', handlePointerUp);
-    viewport.addEventListener('lostpointercapture', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        pointerId = null;
-        viewport.classList.remove('is-dragging');
-        goTo(currentIndex, true);
-    });
-
-    track.addEventListener('transitionend', () => {
-        if (!isTransitioning) return;
-        isTransitioning = false;
-        syncLoopPosition();
-        updateVisualState();
-    });
-
-    window.addEventListener('resize', () => {
-        requestAnimationFrame(() => goTo(currentIndex, false));
-    });
-
-    window.addEventListener('load', () => {
-        requestAnimationFrame(() => goTo(currentIndex, false));
-    });
-
-    goTo(currentIndex, false);
-})();
-
-/* ============================================================
-   RIPPLE EFFECT ON BUTTONS
-   ============================================================ */
-(function initRipple() {
-    const btns = document.querySelectorAll('.btn-primary-custom, .btn-ghost-custom, .btn-hire');
-
-    btns.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            const rect = this.getBoundingClientRect();
-            const ripple = document.createElement('span');
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        top: ${y}px;
-        left: ${x}px;
-        background: rgba(255,255,255,0.15);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple-anim 0.6s ease-out forwards;
-        pointer-events: none;
-        z-index: 10;
-      `;
-
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-            this.appendChild(ripple);
-
-            setTimeout(() => ripple.remove(), 700);
-        });
-    });
-
-    // Add keyframes via style tag if not present
-    if (!document.getElementById('ripple-style')) {
-        const style = document.createElement('style');
-        style.id = 'ripple-style';
-        style.textContent = `
-      @keyframes ripple-anim {
-        to { transform: scale(2.5); opacity: 0; }
-      }
-    `;
-        document.head.appendChild(style);
-    }
-})();
-
-/* ============================================================
-   ACTIVE NAV LINK ON SCROLL
-   ============================================================ */
-(function initActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    if (!sections.length || !navLinks.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(link => {
-                    link.style.color = '';
-                    link.style.removeProperty('color');
-                });
-                const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-                if (activeLink) {
-                    activeLink.style.color = 'var(--accent)';
-                }
-            }
-        });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-
-    sections.forEach(s => observer.observe(s));
-})();
-
-/* ============================================================
-   SMOOTH SCROLL for internal links
-   ============================================================ */
-(function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-                // Close mobile navbar if open
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) bsCollapse.hide();
-                }
-            }
-        });
-    });
-})();
-
-/* ============================================================
-   STAGGER HERO ELEMENTS ON LOAD
-   ============================================================ */
-(function initHeroLoad() {
-    // Hero elements marked with reveal-up animate on page load
-    const heroRevealEls = document.querySelectorAll('.hero-section .reveal-up, .hero-section .reveal-left');
-
-    // Trigger them immediately since they're in viewport on load
-    requestAnimationFrame(() => {
-        setTimeout(() => {
-            heroRevealEls.forEach(el => el.classList.add('visible'));
-        }, 100);
-    });
-})();
-
-/* ============================================================
-   SCROLL PROGRESS BAR
-   ============================================================ */
-(function initProgressBar() {
-    const bar = document.createElement('div');
-    bar.style.cssText = `
-    position: fixed;
-    top: 0; left: 0;
-    height: 2px;
-    width: 0%;
-    background: linear-gradient(to right, var(--accent), var(--accent-strong));
-    z-index: 9997;
-    transition: width 0.1s linear;
-    pointer-events: none;
-  `;
-    document.body.appendChild(bar);
-
-    window.addEventListener('scroll', () => {
-        const scrollTop = document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const progress = scrollTop / scrollHeight * 100;
-        bar.style.width = progress + '%';
-    }, { passive: true });
-})();
-
-/* ============================================================
-   COUNTER ANIMATION for stats
-   ============================================================ */
-(function initCounters() {
-    const statNums = document.querySelectorAll('.stat-num');
-    if (!statNums.length) return;
-
-    const counts = ['4+', '30+', '4'];
-    const targets = [4, 30, 4];
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const idx = Array.from(statNums).indexOf(el);
-                if (idx < 0) return;
-
-                const target = targets[idx];
-                const suffix = counts[idx].replace(/[0-9]/g, '');
-                let current = 0;
-                const step = target / 30;
-                const interval = setInterval(() => {
-                    current = Math.min(current + step, target);
-                    el.textContent = Math.ceil(current) + suffix;
-                    if (current >= target) clearInterval(interval);
-                }, 40);
-
-                observer.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statNums.forEach(el => observer.observe(el));
-})();
-
-/* ============================================================
-   TYPING EFFECT for hero role text
-   ============================================================ */
-(function initTyping() {
-    const roleText = document.querySelector('.role-text');
-    if (!roleText) return;
-
-    const text = roleText.textContent.trim();
-    roleText.textContent = '';
-
-    let i = 0;
-
-    setTimeout(() => {
-        const interval = setInterval(() => {
-            if (i < text.length) {
-                roleText.textContent += text[i];
-                i++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 60);
-    }, 1200);
-})();
-
-/* ============================================================
-   PARTICLE CLICK EFFECT
-   ============================================================ */
-(function initParticleClick() {
-    const colors = ['#f59e0b', '#fbbf24', '#ffffff', '#a1a1aa'];
-
-    document.addEventListener('click', (e) => {
-        const target = e.target;
-        // Only create particles if clicking on background areas
-        if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')) return;
-
-        for (let p = 0; p < 6; p++) {
-            const particle = document.createElement('div');
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const size = Math.random() * 4 + 2;
-            const angle = (Math.random() * 360) * (Math.PI / 180);
-            const distance = Math.random() * 60 + 30;
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance;
-
-            particle.style.cssText = `
-        position: fixed;
-        left: ${e.clientX}px;
-        top: ${e.clientY}px;
-        width: ${size}px;
-        height: ${size}px;
-        background: ${color};
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9996;
-        animation: particle-fly 0.7s ease forwards;
-        --tx: ${tx}px;
-        --ty: ${ty}px;
-      `;
-            document.body.appendChild(particle);
-            setTimeout(() => particle.remove(), 750);
-        }
-    });
-
-    if (!document.getElementById('particle-style')) {
-        const style = document.createElement('style');
-        style.id = 'particle-style';
-        style.textContent = `
-      @keyframes particle-fly {
-        0% { transform: translate(0,0) scale(1); opacity: 1; }
-        100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-      }
-    `;
-        document.head.appendChild(style);
-    }
-})();
-
-/* ============================================================
-   BACK-SCROLL: Scroll to hero when clicking brand
-   ============================================================ */
-(function initBrandScroll() {
-    const brand = document.querySelector('.navbar-brand');
-    if (!brand) return;
-    brand.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateScrollState);
+  }, { passive: true });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100) setMenu(false);
+    updateScrollState();
+  });
+  reducedMotion.addEventListener?.('change', updateScrollState);
+  backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' }));
+  updateScrollState();
 })();
